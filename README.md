@@ -2,7 +2,7 @@
 
 The website for 332: a crew, a handle, a zine and a project at once.
 
-> Status: **planning.** No code yet. The stack (framework and hosting) is still open; see [open decisions](docs/ARCHITECTURE.md#open-decisions).
+> Status: **planning.** No code yet. One static page in plain HTML and CSS; hosting is still open. See [open decisions](docs/ARCHITECTURE.md#open-decisions).
 
 ## Requirements
 

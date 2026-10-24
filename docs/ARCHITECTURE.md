@@ -1,6 +1,6 @@
 # Architecture
 
-Static site. Built ahead of time, served as plain files.
+One static page. Plain HTML and CSS, no framework, no build step, no third-party requests. The host serves the files as they are in the repo.
 
 ## System
 
@@ -11,56 +11,35 @@ flowchart LR
 
   subgraph gh [GitHub · order-332]
     repo[(web)]
-    ci[["CI: build + checks"]]
   end
 
   host[("Static host")]
 
   crew -- "pull request" --> repo
-  repo -- "merge to main" --> ci
-  ci -- "deploy dist/" --> host
+  repo -- "merge to main" --> host
   visitor -- "HTTPS" --> host
 ```
 
-## Pages
+## Files
 
-```mermaid
-flowchart TD
-  home["/"]
-  home --> zine["/zine"] --> issue["/zine/0x01"] --> article["/zine/0x01/slug"]
-  home --> crew["/crew"] --> member["/crew/handle"]
-  home --> projects["/projects"] --> project["/projects/slug"]
-  home --> about["/about"]
-```
+| File | What |
+|---|---|
+| `index.html` | The page |
+| `style.css` | All styling |
+| `_headers` | Security headers and CSP, applied by the host |
 
-## Content
+JavaScript only if the page needs it, as a file of our own (`main.js`). Fonts and images are self-hosted.
 
-```mermaid
-erDiagram
-  ISSUE ||--|{ ARTICLE : contains
-  MEMBER ||--o{ ARTICLE : writes
-  MEMBER }o--o{ PROJECT : works_on
+## Security
 
-  ISSUE {
-    string number "0x01"
-    string title
-    date released
-  }
-  ARTICLE {
-    string slug
-    string title
-    string[] authors
-  }
-  MEMBER {
-    string handle
-    string role
-  }
-  PROJECT {
-    string slug
-    string name
-    string status
-  }
-```
+Security comes from the host's response headers and from having almost nothing to attack:
+
+- Strict CSP: `default-src 'none'`, then only our own files. No inline scripts or styles.
+- HSTS with preload, `nosniff`, `no-referrer`, a Permissions-Policy that turns everything off, and COOP/CORP `same-origin`.
+- No dependencies, no analytics, no CDNs, no embeds.
+- 2FA on the registrar, host and GitHub; DNSSEC and a CAA record on the domain.
+
+Check with Mozilla HTTP Observatory and securityheaders.com after each deploy.
 
 ## Release
 
@@ -68,18 +47,16 @@ erDiagram
 sequenceDiagram
   actor Dev as Crew
   participant PR as Pull request
-  participant CI
   participant Host as Static host
 
   Dev->>PR: open
-  PR->>CI: install · typecheck · build
-  CI-->>PR: pass / fail
-  PR->>CI: merge to main
-  CI->>Host: deploy dist/
+  Host-->>PR: preview deploy
+  PR->>Host: merge to main
+  Host->>Host: deploy
 ```
 
 ## Open decisions
 
-- **Framework:** Astro on Bun, or Bun's HTML bundler.
+- **CTF:** a CTF platform we host (challenges, scoreboard, accounts) goes on its own subdomain as a separate app, never inside this site. Results or writeups would be content here instead; writeups are the point where a static site generator (Astro) becomes worth it.
 - **Host:** Cloudflare Pages or Netlify.
 - **Domain:** to be decided.
