@@ -11,87 +11,75 @@
   const vec = (la, lo) => [Math.cos(la * R) * Math.cos(lo * R), Math.cos(la * R) * Math.sin(lo * R), Math.sin(la * R)];
   const HOPS = [[64.1,-21.9],[51.5,-0.1],[52.2,21],[41,28.9],[35.7,51.4],[24.9,67],[6.9,79.9],[24.7,46.7]].map(([la, lo]) => vec(la, lo));
   const slerp = (a, b, t) => { const d = Math.acos(Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2])), s = Math.sin(d); const k1 = Math.sin((1 - t) * d) / s, k2 = Math.sin(t * d) / s; return [a[0] * k1 + b[0] * k2, a[1] * k1 + b[1] * k2, a[2] * k1 + b[2] * k2]; };
-  const ROUTE = []; for (let h = 0; h < HOPS.length - 1; h++) for (let i = 0; i < 24; i++) { const t = i / 24, p = slerp(HOPS[h], HOPS[h + 1], t), lift = 1 + 0.12 * Math.sin(Math.PI * t); ROUTE.push([p[0] * lift, p[1] * lift, p[2] * lift]); }
+  const ROUTE = []; for (let h = 0; h < HOPS.length - 1; h++) for (let i = 0; i < 30; i++) { const t = i / 30, p = slerp(HOPS[h], HOPS[h + 1], t), lift = 1 + 0.1 * Math.sin(Math.PI * t); ROUTE.push([p[0] * lift, p[1] * lift, p[2] * lift]); }
   ROUTE.push(HOPS[HOPS.length - 1]);
   await document.fonts.load("16px VGA");
 
   const opt = { rotate: !still, labels: true, route: true };
-  document.querySelectorAll(".pills button").forEach(b => b.addEventListener("click", () => { const k = b.dataset.k; opt[k] = !opt[k]; b.setAttribute("aria-pressed", String(opt[k])); }));
+  document.querySelectorAll("[data-k]").forEach(b => b.addEventListener("click", () => { const k = b.dataset.k; opt[k] = !opt[k]; b.setAttribute("aria-pressed", String(opt[k])); }));
   let hot = -1;
   document.querySelectorAll("[data-h]").forEach(el => { el.addEventListener("pointerenter", () => { hot = +el.dataset.h; }); el.addEventListener("pointerleave", () => { hot = -1; }); });
 
-  const N = 200, HALF = N / 2, RAD = HALF - 9;
-  const off = new OffscreenCanvas(N, N), oc = off.getContext("2d"), img = oc.createImageData(N, N), px = img.data;
-  const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
-  const LANDC = [[15, 92, 28], [31, 174, 46], [57, 255, 20], [190, 255, 170]];
-  const SEAC = [[3, 12, 6], [6, 24, 11], [10, 38, 17]];
-  const GLOW = [57, 255, 20];
-  const set = (x, y, c, a = 255) => { x |= 0; y |= 0; if (x < 0 || y < 0 || x >= N || y >= N) return; const k = (y * N + x) * 4; px[k] = c[0]; px[k + 1] = c[1]; px[k + 2] = c[2]; px[k + 3] = a; };
-  const line = (x0, y0, x1, y1, c) => { x0 |= 0; y0 |= 0; x1 |= 0; y1 |= 0; const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1; let e = dx + dy; for (;;) { set(x0, y0, c); if (x0 === x1 && y0 === y1) break; const e2 = 2 * e; if (e2 >= dy) { e += dy; x0 += sx; } if (e2 <= dx) { e += dx; y0 += sy; } } };
-
-  let W = 0, H = 0, dpr = 1;
-  const size = () => { dpr = Math.min(2, devicePixelRatio || 1); const r = cv.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; };
+  const N = 84, HALF = N / 2;
+  const LAND = ["#0f6b22", "#1fae2e", "#39ff14", "#b8ffa0"], SEA = "#0b2412", RIM = "#123a1a";
+  let dpr = 1;
+  const size = () => { dpr = Math.min(2, devicePixelRatio || 1); const r = cv.getBoundingClientRect(); cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr); };
   size(); addEventListener("resize", size);
   const lonEl = document.getElementById("lon"), xyEl = document.getElementById("xy");
-  const STARS = Array.from({ length: 70 }, (_, i) => [Math.abs(Math.sin(i * 91.7)) % 1, Math.abs(Math.sin(i * 47.3 + 1)) % 1, i % 3]);
   let spin = 0, last = performance.now();
   const lat0 = 22 * R, lonBase = 38 * R;
-
+  const cellOf = new Map();
   const frame = now => {
     const dt = Math.min(50, now - last); last = now;
     if (opt.rotate) spin += dt * 0.00004;
     const lon = lonBase + Math.sin(spin * 6) * 0.6, cl = Math.cos(lon), sl = Math.sin(lon), ca = Math.cos(lat0), sa = Math.sin(lat0);
     const P = v => { const x1 = -v[0] * sl + v[1] * cl, y0 = v[0] * cl + v[1] * sl; return [x1, -sa * y0 + ca * v[2], ca * y0 + sa * v[2]]; };
-    px.fill(0);
-    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
-      const X = (x + 0.5 - HALF) / RAD, Y = -(y + 0.5 - HALF) / RAD, d = X * X + Y * Y, th = BAYER[(y & 3) * 4 + (x & 3)] / 16;
-      if (d > 1) { if (d < 1.22 && th < (1.22 - d) / 0.22 * 0.55) set(x, y, GLOW, 70); continue; }
+    const DW = cv.width, DH = cv.height, cs = Math.max(4, Math.floor(Math.min(DW, DH) * 0.9 / N)), gap = Math.max(1, Math.round(cs * 0.2)), S = cs * N;
+    const ox = Math.round((DW - S) / 2), oy = Math.round((DH - S) / 2), box = cs - gap;
+    g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, DW, DH);
+    const cell = (i, j, col) => { g.fillStyle = col; g.fillRect(ox + i * cs, oy + j * cs, box, box); };
+    for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) {
+      const X = (i + 0.5 - HALF) / (HALF - 1), Y = -(j + 0.5 - HALF) / (HALF - 1), d = X * X + Y * Y;
+      if (d > 1) continue;
       const Z = Math.sqrt(1 - d), y0 = -sa * Y + ca * Z, v2 = ca * Y + sa * Z, v0 = -X * sl + y0 * cl, v1 = X * cl + y0 * sl;
-      const land = isLand(Math.asin(v2), Math.atan2(v1, v0));
-      const b = Math.max(0, -0.42 * X + 0.5 * Y + 0.76 * Z);
-      if (land) set(x, y, LANDC[Math.max(0, Math.min(3, Math.floor(b * 3.2 + th * 0.9)))]);
-      else set(x, y, d > 0.93 ? SEAC[2] : SEAC[Math.max(0, Math.min(1, Math.floor(b * 1.6 + th * 0.8)))]);
+      if (isLand(Math.asin(v2), Math.atan2(v1, v0))) {
+        const b = -0.4 * X + 0.45 * Y + 0.8 * Z;
+        cell(i, j, LAND[b > 0.86 ? 3 : b > 0.6 ? 2 : b > 0.3 ? 1 : 0]);
+      } else cell(i, j, d > 0.88 ? RIM : SEA);
     }
-    const sp = ROUTE.map(v => { const [x, y, z] = P(v); return [HALF + x * RAD, HALF - y * RAD, z]; });
+    const toCell = v => { const [x, y, z] = P(v); return [Math.round(HALF - 0.5 + x * (HALF - 1)), Math.round(HALF - 0.5 - y * (HALF - 1)), z]; };
     if (opt.route) {
-      for (let i = 1; i < sp.length; i++) if (sp[i][2] > 0 && sp[i - 1][2] > 0) line(sp[i - 1][0], sp[i - 1][1], sp[i][0], sp[i][1], [120, 200, 120]);
-      const head = still ? sp.length - 1 : Math.floor(((now / 5200) % 1) * sp.length);
-      for (let i = Math.max(1, head - 10); i <= head; i++) if (sp[i][2] > 0 && sp[i - 1][2] > 0) line(sp[i - 1][0], sp[i - 1][1], sp[i][0], sp[i][1], i > head - 3 ? [255, 255, 255] : [57, 255, 20]);
+      const pts = ROUTE.map(toCell), lit = new Set(), head = still ? pts.length - 1 : Math.floor(((now / 5200) % 1) * pts.length);
+      for (let k = 1; k < pts.length; k++) {
+        if (pts[k][2] < 0 || pts[k - 1][2] < 0) continue;
+        let [x0, y0] = pts[k - 1]; const [x1, y1] = pts[k], dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1; let e = dx + dy;
+        for (;;) { lit.add(x0 + "," + y0 + "," + (k > head - 8 && k <= head ? 1 : 0)); if (x0 === x1 && y0 === y1) break; const e2 = 2 * e; if (e2 >= dy) { e += dy; x0 += sx; } if (e2 <= dx) { e += dx; y0 += sy; } }
+      }
+      for (const s of lit) { const [i, j, h] = s.split(",").map(Number); cell(i, j, h ? "#ffffff" : "#d6ffd0"); }
     }
-    const hp = HOPS.map(v => { const [x, y, z] = P(v); return [HALF + x * RAD, HALF - y * RAD, z]; });
-    hp.forEach(([x, y, z], i) => {
+    const hp = HOPS.map(toCell), blink = (now / 450 | 0) % 2;
+    hp.forEach(([i, j, z], k) => {
       if (z < 0) return;
-      const dst = i === hp.length - 1, blink = (now / 400 | 0) % 2;
-      if (dst) { for (let a = -2; a <= 2; a++) for (let b = -2; b <= 2; b++) set(x + a, y + b, Math.abs(a) === 2 || Math.abs(b) === 2 ? (blink ? [255, 43, 214] : [80, 10, 70]) : [255, 43, 214]); }
-      else { for (let a = -1; a <= 1; a++) for (let b = -1; b <= 1; b++) set(x + a, y + b, a || b ? [0, 0, 0] : (hot === i ? [255, 43, 214] : [255, 255, 255])); }
+      if (k === hp.length - 1) { for (let a = -1; a <= 1; a++) for (let b = -1; b <= 1; b++) cell(i + a, j + b, blink || (a === 0 && b === 0) ? "#ff2bd6" : "#5a0a4c"); }
+      else { const c = hot === k ? "#ff2bd6" : "#ffffff"; cell(i, j, c); cell(i + 1, j, c); cell(i, j + 1, c); cell(i + 1, j + 1, c); }
     });
-    oc.putImageData(img, 0, 0);
-
-    g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height);
-    const DW = cv.width, DH = cv.height, ds = Math.max(2, Math.floor(Math.min(DW, DH) * 0.92 / N)), DS = N * ds, dox = Math.round((DW - DS) / 2), doy = Math.round((DH - DS) / 2);
-    g.fillStyle = "rgba(57,255,20,0.4)";
-    for (const [sx, sy, k] of STARS) { const X = Math.round(sx * DW / ds) * ds, Y = Math.round(sy * DH / ds) * ds; if (X > dox - ds && X < dox + DS && Y > doy - ds && Y < doy + DS) continue; if (k === 0 && (now / 700 | 0) % 2) continue; g.fillRect(X, Y, ds, ds); }
-    g.imageSmoothingEnabled = false; g.drawImage(off, dox, doy, DS, DS);
-    g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const scale = ds / dpr, ox = dox / dpr, oy = doy / dpr;
     if (opt.labels) {
-      g.font = "16px VGA"; g.textBaseline = "middle";
-      hp.forEach(([x, y, z], i) => {
+      g.setTransform(dpr, 0, 0, dpr, 0, 0); g.font = "16px VGA"; g.textBaseline = "middle";
+      hp.forEach(([i, j, z], k) => {
         if (z < 0) return;
-        const X = ox + x * scale, Y = oy + y * scale, dst = i === hp.length - 1;
-        if (dst) {
-          const label = "332 · 3.320 ms", w = g.measureText(label).width + 30, tx = X + 6 * scale, ty = Y - 12 * scale - 24;
-          g.fillStyle = "#ff2bd6"; g.fillRect(X - scale / 2, ty + 12, scale, Y - 3 * scale - (ty + 12)); g.fillRect(X - scale / 2, ty + 12 - scale / 2, tx - X + scale / 2, scale);
+        const X = (ox + (i + 1) * cs) / dpr, Y = (oy + j * cs) / dpr;
+        if (k === hp.length - 1) {
+          const label = "332 · 3.320 ms", w = g.measureText(label).width + 30, tx = X + 40, ty = Y - 70;
+          g.fillStyle = "#ff2bd6"; g.fillRect(X, ty + 12, 2, Y - ty - 16); g.fillRect(X, ty + 11, tx - X, 2);
           g.fillStyle = "#1a0016"; g.fillRect(tx, ty, w, 24); g.strokeStyle = "#ff2bd6"; g.lineWidth = 2; g.strokeRect(tx + 1, ty + 1, w - 2, 22);
           g.fillStyle = "#ff2bd6"; g.fillRect(tx + 9, ty + 9, 6, 6); g.fillStyle = "#ffe6fb"; g.fillText(label, tx + 21, ty + 12.5);
         } else {
-          g.fillStyle = hot === i ? "#ff2bd6" : "#39ff14"; g.fillRect(X + 8, Y - 14, 5, 5);
-          g.fillStyle = hot === i ? "#ff2bd6" : "#eaffea"; g.fillText(String(i + 1).padStart(2, "0") + " * * *", X + 17, Y - 11);
+          g.fillStyle = hot === k ? "#ff2bd6" : "#eaffea"; g.fillText(String(k + 1).padStart(2, "0"), X + 8, Y - 8);
         }
       });
     }
     lonEl.textContent = "lon " + (lon / R).toFixed(1) + "°";
-    xyEl.textContent = N + "×" + N + " px · x" + ds + " · lat " + (lat0 / R).toFixed(1) + " · lon " + (lon / R).toFixed(1);
+    xyEl.textContent = N + "×" + N + " cells · lat " + (lat0 / R).toFixed(1) + " · lon " + (lon / R).toFixed(1);
     requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);
