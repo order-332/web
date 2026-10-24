@@ -23,4 +23,5 @@ const keys = e => {
 };
 addEventListener("keydown", keys);
 frame.addEventListener("load", () => { try { frame.contentWindow.addEventListener("keydown", keys); } catch {} });
+addEventListener("hashchange", () => { const k = ids.findIndex(id => id.startsWith(location.hash.slice(1))); if (k >= 0 && k !== i) show(k); });
 show(i);
