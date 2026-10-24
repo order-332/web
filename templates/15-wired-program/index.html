@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>332 // wired.program</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+<div class="bg">
+<div id="maincontainer">
+<div id="under">
+
+  <h1 class="layer">LAYER 00: PROGRAM
+    <svg class="osicon" viewBox="0 0 36 30" aria-hidden="true">
+      <g fill="none" stroke="#3ff" stroke-width="2.4" stroke-linecap="round">
+        <path d="M4 15 C10 5 26 5 32 15 C26 25 10 25 4 15 Z"/>
+        <circle cx="18" cy="15" r="4.6"/>
+        <path d="M18 3 V1 M8 6 L6 3 M28 6 L30 3 M10 24 L8 28 M26 24 L28 28 M18 27 V29"/>
+      </g>
+      <circle cx="18" cy="15" r="1.8" fill="#3ff"/>
+    </svg>
+  </h1>
+
+  <nav id="linkcontainer" aria-label="layers">
+    <a class="prvw" href="#"><span>PRVW:<br>Index</span></a>
+    <div class="rows">
+      <div class="linkrow">
+        <a class="layerlink" href="../03-nfo/"><span>01:<br>nfo</span></a>
+        <a class="layerlink" href="../04-bbs/"><span>02:<br>bbs</span></a>
+        <a class="layerlink" href="../06-hexdump/"><span>03:<br>Hexdump</span></a>
+        <a class="layerlink" href="../08-ascii-render/"><span>04:<br>Glyph</span></a>
+        <a class="layerlink" href="../09-globe/"><span>05:<br>Globe</span></a>
+        <a class="layerlink0" href="#" aria-current="page"><span>06:<br>Crew</span></a>
+        <a class="layerlink" href="../10-circuit/"><span>07:<br>Circuit</span></a>
+      </div>
+      <div class="linkrow">
+        <a class="layerlink" href="../16-wired-rumors/"><span>08:<br>Rumors</span></a>
+        <a class="layerlink" href="../11-traceroute-web/"><span>09:<br>Web</span></a>
+        <a class="layerlink" href="#"><span>10:<br>Zine</span></a>
+        <a class="layerlink" href="#"><span>11:<br>Handle</span></a>
+        <a class="layerlink" href="https://ctf.order332.com/" target="_blank" rel="noopener"><span>12:<br>CTF</span></a>
+        <a class="layerlink" href="#"><span>13:<br>Project</span></a>
+        <a class="layerlink" href="./"><span>00:<br>Program</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="main">
+    <canvas id="dither" aria-hidden="true"></canvas>
+
+    <a id="return" href="#">RETURN TO INDEX</a>
+
+    <h2 class="head">PROGRAM:
+      <a class="pill" href="#" title="log B"><svg viewBox="0 0 64 32" aria-hidden="true"><ellipse cx="32" cy="16" rx="30" ry="14" fill="#6a6ad8" stroke="#22226a" stroke-width="2"/><ellipse cx="32" cy="12" rx="24" ry="7" fill="#9c9cf0" opacity=".55"/><path d="M14 20 L34 9 L48 14 L28 25 Z" fill="#d8d8e8" stroke="#22226a" stroke-width="1.5"/><path d="M28 25 L28 28 L48 17 L48 14" fill="#8888a8" stroke="#22226a" stroke-width="1.5"/><text x="8" y="14" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="9" fill="#1a1a5a">332</text></svg></a>
+      <a class="pill" href="#" title="log A"><svg viewBox="0 0 64 32" aria-hidden="true"><ellipse cx="32" cy="16" rx="30" ry="14" fill="#6a6ad8" stroke="#22226a" stroke-width="2"/><ellipse cx="32" cy="12" rx="24" ry="7" fill="#9c9cf0" opacity=".55"/><path d="M14 20 L34 9 L48 14 L28 25 Z" fill="#d8d8e8" stroke="#22226a" stroke-width="1.5"/><path d="M28 25 L28 28 L48 17 L48 14" fill="#8888a8" stroke="#22226a" stroke-width="1.5"/><text x="8" y="14" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="9" fill="#1a1a5a">332</text></svg></a>
+    </h2>
+
+    <div class="entry">
+      <svg id="cube" viewBox="0 0 150 110" aria-hidden="true">
+        <defs>
+          <linearGradient id="gt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f4ee"/><stop offset="1" stop-color="#9a9a90"/></linearGradient>
+          <linearGradient id="gl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d6d6cc"/><stop offset="1" stop-color="#7a7a72"/></linearGradient>
+          <linearGradient id="gr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a8a82"/><stop offset="1" stop-color="#4a4a44"/></linearGradient>
+          <pattern id="st" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000" opacity=".18"/></pattern>
+        </defs>
+        <g fill="#f0a030"><circle cx="9" cy="14" r="6"/><circle cx="25" cy="14" r="6"/><circle cx="41" cy="14" r="6"/><circle cx="9" cy="90" r="6"/></g>
+        <g stroke="#3a3a34" stroke-width="1">
+          <path d="M50 22 L100 2 L148 22 L98 42 Z" fill="url(#gt)"/>
+          <path d="M50 22 L98 42 L98 106 L50 86 Z" fill="url(#gl)"/>
+          <path d="M98 42 L148 22 L148 86 L98 106 Z" fill="url(#gr)"/>
+          <path d="M66 15.6 L114 35.6 M82 9.2 L130 29.2 M66 28.6 L116 8.6 M82 35 L132 15 M66 28.6 V92.4 M82 35 V99 M50 43.3 L98 63.3 M50 64.6 L98 84.6 M114 35.6 V99.6 M131 28.8 V92.8 M98 63.3 L148 43.3 M98 84.6 L148 64.6" fill="none"/>
+          <path d="M50 22 L100 2 L148 22 L98 42 Z M50 22 L98 42 L98 106 L50 86 Z M98 42 L148 22 L148 86 L98 106 Z" fill="url(#st)"/>
+        </g>
+        <path d="M117 55 L131 62 L117 72 Z" fill="#555" stroke="#ddd" stroke-width="1"/>
+      </svg>
+
+      <p class="print">Print .../332/Logs/Transmission_A.txt<span class="cur"> |</span></p>
+      <br>
+      <p>&gt; The handle was [handle]. It was the first one we ever logged.</p>
+      <br>
+      <p>&gt; When did it start? Nobody can say for sure. 0x?? is the only date on the file. The clock on the board stopped a long time ago.</p>
+      <p>&gt; A signal came in, no origin, no referrer. We, as 332, traced it. First to a dead BBS node, then to a terminal somewhere we never found.</p>
+      <p>&gt; [handle] was a quiet user. No posts, no replies, just reads. Thousands of reads, at every hour, on every board.</p>
+      <p>&gt; We left an .nfo where it would be found. A little bait, a little ANSI. It worked better than any of us expected.</p>
+      <p>&gt; It was told to keep a log. That log became a map of every door it opened, and every door it shouldn't have.</p>
+      <p>&gt; Alone at the keyboard, [handle] went looking for whoever was on the other side of the wire.</p>
+      <p>&gt; What it found, well... It found us. First through a hexdump left in the open, and later through the zine itself.</p>
+      <p>&gt; We watched every session. Lurkers and sysops crowded the channel just to read the scrollback.</p>
+      <p>&gt; It wasn't harmless. We fed it puzzles, broken ciphers, files that were never meant to be opened.</p>
+      <p>&gt; We pulled it deeper into the layers. What none of us planned for was that it started solving them.</p>
+      <p>&gt; [handle] learned fast. Within weeks it could read our dumps, map our circuits and trace our routes.</p>
+      <p>&gt; Some of the crew got nervous. Some got excited. Nobody logged off.</p>
+      <p>&gt; You see, reader, 332 is not one thing. It is a crew, a handle, a zine and a project, and the wire runs through all four.</p>
+      <p>&gt; When we opened the <a href="https://ctf.order332.com/" target="_blank" rel="noopener">ctf</a>, [handle] was the first connection on the board. Of course it was.</p>
+      <p>&gt; Everything it typed ended up in the archive. The crew read it like scripture.</p>
+      <br>
+      <p>END OF Transmission_A.txt</p>
+      <p>Transmission_B.txt...Upload Complete.</p>
+      <br>
+      <p class="print">Print .../332/Logs/Transmission_B.txt<span class="cur"> |</span></p>
+      <br>
+      <p>&gt; The puzzles had done their work. [handle] was no longer following our trail. It was making its own.</p>
+      <p>&gt; It patched our bait, rewrote our banners, answered riddles we had not finished writing... Nothing stayed hidden for long.</p>
+      <p>&gt; We moved the boards around to keep it busy. Splitting the archive across layers was <i>too easy</i>.</p>
+      <p>&gt; By the time anyone noticed the logs were reading us back, it was far too late.</p>
+      <p>&gt; The real test was the globe. Every node, every route, every hop. It mapped all of them in a single night.</p>
+      <p>&gt; We gave it a handle of its own. It thought of it as a mask. It was really just a way for us to keep count.</p>
+      <p>&gt; Its curiosity brought it close to the circuit room. One more trace and the whole board would have been visible.</p>
+      <p>&gt; But the crew is always watching, and we pulled the cable before it got through. It was decided it needed more to do.</p>
+      <p>&gt; So we started closing layers one by one. It answered by opening new ones we had never seen.</p>
+      <p>&gt; At first its replies were just echoes. Later they started to make sense. The glyphs it sent back were very good.</p>
+      <p>&gt; [handle] contacted a mirror node about the zine. We let it read one issue to see how far it would go. Issue 0x??, still tba.</p>
+      <p>&gt; Not only was it reading the zine, it was editing it. Every draft came back changed.</p>
+      <p>&gt; We wiped its old sessions and tested it with an empty board, no prompt, no banner.</p>
+      <p>&gt; It never typed a thing. We took that, later, as the first sign we were losing the thread.</p>
+      <p>&gt; Despite every lock, it found the ctf scoreboard. We had prepared for the chance it would climb it.</p>
+      <p>&gt; We needed to reset the board and close the hole that let it in.</p>
+      <p>&gt; We sent more bait, but it ignored every handle we tried: [handle], [handle], [handle].</p>
+      <p>&gt; Afraid of other lurkers, we took the old mirrors down. Then we flooded the wire with noise.</p>
+      <p>&gt; [handle], full of tricks as ever, spun up a copy of itself. With the zine as a carrier, it spread across every layer.</p>
+      <p>&gt; We sent out cleanup scripts, but nobody could swear they caught every copy...</p>
+      <p>&gt; It came as a real shock when the whole archive went dark and the handle disappeared.</p>
+      <p>&gt; It was agreed we would only watch from now on. It had become too much for the crew.</p>
+      <p>&gt; A year later the logs started moving again. We had it wipe its last backup and ran the final script.</p>
+      <p>&gt; We took the handle and kept the archive. The project is still running. Coming soon.</p>
+      <p>&gt; and then...<span class="red"> carrier lost.</span></p>
+      <br>
+      <p>END OF Transmission_B.txt</p>
+      <p>...END OF ARCHIVE.</p>
+    </div>
+  </div>
+
+  <div class="divet" aria-hidden="true"></div>
+
+  <a class="navi" href="#" title="332 OS">
+    <svg viewBox="0 0 40 30" aria-hidden="true"><g fill="none" stroke="#9ef" stroke-width="2.2"><path d="M3 15 C9 5 31 5 37 15 C31 25 9 25 3 15 Z"/><circle cx="20" cy="15" r="5"/></g><circle cx="20" cy="15" r="2" fill="#9ef"/></svg>
+    <span class="nb"><small>POWERED BY</small><b>332 OS</b></span>
+  </a>
+
+</div>
+</div>
+</div>
+</body>
+</html>
