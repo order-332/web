@@ -1,0 +1,72 @@
+:root{--r:#db0e15;color-scheme:dark}
+*{box-sizing:border-box}
+a{text-decoration:none;color:#d90000}
+img{max-width:100%;height:auto}
+html,body{margin:0;padding:0;height:100%}
+body{color:var(--r);font:300 26px/1.15 "Share Tech Mono","OCR A Extended","Lucida Console",Consolas,monospace;text-shadow:0 0 5px rgba(219,14,21,.8);
+  background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(0,0,0,.75) 100%),repeating-linear-gradient(180deg,#000 0 2px,#0d0707 2px 4px);background-color:#000;
+  position:relative;min-height:100vh;user-select:none;overflow-x:hidden}
+::selection{background:var(--r);color:#000}
+
+.container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:4vh 0}
+.container.is-success{filter:hue-rotate(180deg) brightness(2.7)}
+.screen{width:100%}
+.screen::after{content:"";display:block;margin:0 auto;width:100%;max-width:500px;height:28px;background:url(chevrons.svg) center/contain no-repeat}
+
+.title{text-transform:uppercase;text-align:center;font-size:1em;font-weight:300;margin:0 0 .9em;white-space:nowrap}
+.title::before,.title::after{content:"";display:inline-block;background:var(--r);box-shadow:0 0 6px rgba(219,14,21,.7);width:144px;height:20px;margin:0 20px;vertical-align:-1px}
+
+.box--outer{position:relative;margin:0 auto;width:90%;max-width:1080px;padding:18px 0}
+.box--outer::before,.box--outer::after{content:"";position:absolute;left:0;right:0;height:18px;background:url(dot.svg) 0 0/36px 18px repeat-x;background-repeat:round no-repeat;filter:drop-shadow(0 0 4px rgba(219,14,21,.9))}
+.box--outer::before{top:0}
+.box--outer::after{bottom:0}
+.box{display:block;text-transform:uppercase;text-align:center;width:100%;position:relative}
+.box::before,.box::after{content:"";position:absolute;left:50%;width:14px;height:14px;margin-left:-7px;background:var(--r);box-shadow:0 0 6px rgba(219,14,21,.9);z-index:1}
+.box::before{top:-16px}
+.box::after{bottom:-16px}
+.box--inner{display:inline-block;width:calc(100% - 105px);max-width:1010px}
+.box--inner::before,.box--inner::after{content:"";display:inline-block;background:url(slashes.svg) center/contain no-repeat;max-width:642px;width:100%;height:27px}
+.content{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px}
+.holder{width:100%}
+.msg{margin:0;letter-spacing:.06em}
+.msg b{font-weight:300}
+.logo{margin:1.1em 0 .4em;line-height:0}
+.logo img{width:440px;filter:drop-shadow(0 0 3px rgba(219,14,21,.6))}
+.row{margin-top:.6em}
+.psi{background:none;border:0;padding:0 .3em;color:#d90000;font:inherit;font-size:.8em;text-shadow:inherit;cursor:pointer}
+.psi:focus-visible,a:focus-visible{outline:1px dashed var(--r);outline-offset:3px}
+
+.flash{animation:flashText 1s ease-out infinite alternate}
+@keyframes flashText{0%{opacity:.3}100%{opacity:1}}
+
+.container.on>.screen{animation:turn-on 2s linear forwards}
+@keyframes turn-on{
+  0%{transform:scale(1,.8) translate3d(0,0,0);opacity:1;filter:brightness(30)}
+  3.5%{transform:scale(1,.8) translate3d(0,100%,0)}
+  3.6%{transform:scale(1,.8) translate3d(0,-100%,0);opacity:1}
+  9%{transform:scale(1.3,.6) translate3d(0,100%,0);filter:brightness(30);opacity:0}
+  11%{transform:scale(1,1) translate3d(0,0,0);filter:contrast(0) brightness(0);opacity:0}
+  100%{transform:scale(1,1) translate3d(0,0,0);filter:contrast(1) brightness(1.2) saturate(1.3);opacity:1}
+}
+/* screen flicker veil */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:rgba(18,4,4,.08);animation:flicker .15s infinite;z-index:2}
+@keyframes flicker{0%{opacity:.28}20%{opacity:.6}40%{opacity:.22}60%{opacity:.75}80%{opacity:.3}100%{opacity:.55}}
+
+@media (max-width:1260px){
+  .title::before,.title::after{width:42px;height:18px;margin:0 5px}
+  .content{min-height:440px}
+}
+@media (max-width:600px){
+  body{font-size:20.8px}
+  .title{font-size:.9em}
+  .title::before,.title::after{width:4%;height:16px}
+  .box--outer{width:94%}
+  .box--inner{width:calc(100% - 24px)}
+  .content{min-height:0;padding:1.2em 0}
+  .msg{letter-spacing:.02em;line-height:1.2}
+  .screen::after{max-width:180px}
+  .logo img{width:300px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important}
+}
