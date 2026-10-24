@@ -1,0 +1,45 @@
+:root{--bg:#000;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--bg)}
+::selection{background:#39ff14;color:#000}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.crt{min-height:100%;display:grid;grid-template-rows:1fr auto;position:relative;background:radial-gradient(ellipse at 50% 45%,#06140a,#000 75%)}
+.term{font:clamp(9px,2.3vw,22px)/1.15 VGA,monospace;padding:5vh 6vw;color:#b8c4b8;text-shadow:-1px 0 #ff2bd633,1px 0 #00ffd533}
+.ln{display:inline-block;animation:type .35s steps(24) both}
+@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.d0{animation-delay:0.00s}
+.d1{animation-delay:0.16s}
+.d2{animation-delay:0.32s}
+.d3{animation-delay:0.48s}
+.d4{animation-delay:0.64s}
+.d5{animation-delay:1.60s}
+.d6{animation-delay:1.76s}
+.d7{animation-delay:1.92s}
+.d8{animation-delay:2.08s}
+.d9{animation-delay:2.24s}
+.d10{animation-delay:2.40s}
+.d11{animation-delay:2.56s}
+.d12{animation-delay:2.72s}
+.d13{animation-delay:2.88s}
+.d14{animation-delay:3.04s}
+.d15{animation-delay:3.20s}
+.d16{animation-delay:3.36s}
+.d17{animation-delay:3.52s}
+.d18{animation-delay:3.68s}
+.d19{animation-delay:3.84s}
+.d20{animation-delay:4.00s}
+.d21{animation-delay:4.16s}
+.d22{animation-delay:4.32s}
+.d23{animation-delay:4.48s}
+.d24{animation-delay:4.64s}
+.d25{animation-delay:4.80s}
+.d26{animation-delay:4.96s}
+.c3{color:#00ffd5}.c5{color:#ff2bd6}.c7{color:#d6e0d6}.c8{color:#5e6b5e}.cB{color:#39ff14}.cD{color:#ff2bd6}.cF{color:#fff}
+.g0{color:rgb(182,255,74)}.g1{color:rgb(151,255,61)}.g2{color:rgb(120,255,47)}.g3{color:rgb(88,255,34)}.g4{color:rgb(57,255,20)}.g5{color:rgb(43,255,49)}.g6{color:rgb(29,255,78)}.g7{color:rgb(14,255,107)}.g8{color:rgb(0,255,136)}.g9{color:rgb(0,245,142)}.g10{color:rgb(0,235,148)}.g11{color:rgb(0,224,154)}.g12{color:rgb(0,214,160)}.gsh{color:#3d0040}
+.lg{text-shadow:0 0 10px currentColor}
+.cur{color:#39ff14;animation:blink 1.06s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.status{display:flex;flex-wrap:wrap;background:#39ff14;color:#000;font:clamp(12px,1.3vw,16px)/1 VGA,monospace}
+.status span{padding:5px 1.4ch;border-right:2px solid #0f5a00}
+.status .on{margin-left:auto;background:#ff2bd6;color:#000;border:0}
+@media (prefers-reduced-motion:reduce){*,*::after{animation:none!important}}

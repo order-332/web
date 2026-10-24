@@ -1,0 +1,35 @@
+:root{--bg:#04060a;--o:#00ffa3;--p:#00e5ff;--z:#3a4a66;--c:#b36bff;--h:#3d7bff;--f:#ff3df0;--ink:#eef5ff;--k:#00f0ff;color-scheme:dark}
+*{box-sizing:border-box;margin:0;scrollbar-width:none}
+::-webkit-scrollbar{display:none}
+html,body{min-height:100%;background:var(--bg);color:var(--ink)}
+::selection{background:var(--k);color:#000}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,#0000 65%,#0008);z-index:5}
+.r2{display:grid;grid-template-columns:auto 34ch;grid-template-areas:"st st" "dump side" "dis side";gap:14px 22px;padding:18px 22px;font:min(15px,calc((100vw - 100px) / 98))/1.25 VGA,monospace;min-height:100vh;align-content:start;justify-content:center}
+pre{font:inherit;white-space:pre}
+.st{grid-area:st;background:#0f1622;padding:4px 1ch;color:#eee}
+.st .p{color:var(--o)}
+.cur{background:#eee;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.dump{grid-area:dump;position:relative;display:flex;gap:2ch;overflow:hidden}
+.hd{color:#7d8fb0}
+.o{color:var(--o)}
+i{font-style:normal}
+.z{color:var(--z)}.p{color:var(--p)}.c{color:var(--c)}.h{color:var(--h)}.f{color:var(--f)}
+.hex .k{color:#fff;background:#00708a;box-shadow:0 0 0 2px #00708a;text-shadow:0 0 6px #00f0ff}
+.hex .k.w{animation:glint 1.4s cubic-bezier(.16,1,.3,1)}
+@keyframes glint{from{color:#fff;text-shadow:0 0 10px #fff}}
+.hex:has(.k:hover) .k{color:#000;background:var(--k);animation:none;transition:background .3s}
+.sel{outline:1px solid var(--k);color:#fff!important;background:#12324a}
+.ent .el{color:#1f4f8a}.ent .em{color:#2f9bff}.ent .eh{color:#00e5ff}
+.side{grid-area:side;display:grid;gap:14px;align-content:start}
+.box{border:1px solid #1b2636;padding:8px 1ch;background:#080d14}
+.t{color:#eee}
+.dis{grid-area:dis;border-top:1px solid #1b2636;padding-top:10px;color:var(--ink)}
+.dis .lbl{color:var(--c)}
+.dis .by{color:#7d8fb0}
+.dis .op{color:#eee}.dis .op.j{color:#5fafff}.dis .op.s{color:var(--f)}
+.dis .cm{color:#7fa8ff}
+.fl{font-weight:400;color:#5fafff}
+@media (max-width:900px){.r2{grid-template-columns:1fr;grid-template-areas:"st" "dump" "side" "dis";font-size:calc((100vw - 40px) / 55)}.asc,.ent{display:none}.dis{overflow:hidden;font-size:calc((100vw - 40px) / 40)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
