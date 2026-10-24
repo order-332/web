@@ -1,0 +1,156 @@
+/* 332 // wired.rumors — red layer rail, LED ticker, draggable link cards on a grey cell wall */
+* { margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+html { scrollbar-color: #f00 #111; }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { border-radius: 10px; box-shadow: inset 0 0 6px rgba(0,0,0,.3); }
+::-webkit-scrollbar-thumb { border-radius: 10px; background: #f00; box-shadow: inset 0 0 6px rgba(0,0,0,.5); }
+body {
+  background: #000 url("bg.svg") repeat fixed;
+  padding: 0 0 0 200px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+}
+a { color: inherit; text-decoration: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* fade from white on load */
+#fade {
+  position: fixed; inset: 0; z-index: 999;
+  background: #fff; pointer-events: none;
+  animation: fade 1.4s ease-out forwards;
+}
+@keyframes fade { to { opacity: 0; visibility: hidden; } }
+
+/* left rail */
+#linkcontainer {
+  position: fixed; left: 0; top: 0; height: 100%; z-index: 12;
+  display: flex; flex-direction: column; justify-content: center; align-items: stretch;
+  background: #f00;
+  border-left: 10px solid #fff;
+  border-right: 10px outset #fff;
+  min-width: 100px;
+}
+.layerlink, .layerlink0 {
+  flex: 1 1 0; min-height: 20px; min-width: 112px;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 15px; line-height: 1.1; text-align: center;
+  color: #f00; background: #fff;
+  border: 2px solid #fff;
+  padding: 5px; margin: 1px;
+  overflow: hidden;
+  transition: background-color 1s linear, color 1s linear, border-color 1s linear;
+}
+.layerlink0 { background: #000; border-color: #000; }
+.layerlink:hover, .layerlink:focus-visible { background: #000; color: #fff; border-color: #f00; outline: none; }
+
+/* top banner */
+#banner {
+  position: fixed; top: 0; left: 165px; right: 0; z-index: 9;
+  background: #fff;
+  border-top: 10px solid #fff;
+  border-bottom: 10px outset #fff;
+}
+#pass {
+  font-family: "Departure", "Courier New", monospace;
+  font-weight: 400;
+  font-size: 2em; line-height: 1.15;
+  color: #f00; text-shadow: 0 0 6px rgba(255,0,0,.7);
+  background: #000;
+  border: 5px inset #fff;
+  overflow: hidden; white-space: nowrap;
+}
+#pass span { display: inline-block; padding-left: 100%; animation: tick 38s linear infinite; }
+@keyframes tick { to { transform: translateX(-100%); } }
+
+#layertag {
+  position: fixed; top: 0; right: 0; z-index: 10;
+  width: 25%; height: 30px;
+  background: #fff;
+  border-left: 10px solid #fff;
+  border-bottom: 10px outset #fff;
+  text-align: center;
+}
+#layertag h1 {
+  font-size: 1.5em; line-height: 1.05; font-weight: 700;
+  color: #f00; background: #000;
+  border: 5px inset #fff;
+  white-space: nowrap; overflow: hidden;
+}
+#return {
+  position: fixed; top: 30px; right: 0; z-index: 11;
+  width: 25%;
+  background: #fff;
+  border-left: 10px solid #fff;
+  border-bottom: 10px outset #fff;
+  border-bottom-left-radius: 50px;
+  text-align: center;
+}
+#return a {
+  display: block;
+  font-size: 1.5em; line-height: 1.2;
+  color: #f00; background: #fff;
+  border: 5px inset #fff;
+  border-bottom-left-radius: 50px;
+  white-space: nowrap;
+}
+#return a:hover, #return a:focus-visible { color: #000; outline: none; }
+
+/* link cards */
+#boxes { display: flow-root; padding: 100px 0 150px; }
+.linkbox {
+  position: relative;
+  float: left;
+  margin: 20px; padding: 10px;
+  background: #fff; color: #000;
+  border: 10px outset #fff;
+  box-shadow: 10px 10px 25px #000;
+  touch-action: auto;
+}
+.linkbox:hover, .linkbox:focus-visible { z-index: 9; outline: none; }
+.linkbox.drag { cursor: grabbing; z-index: 50; }
+.linkbox h3 { color: #f00; font-size: 1.17em; line-height: 1.3; }
+.linkbox .th { display: block; width: 150px; max-width: 100%; height: auto; margin: 5px auto; }
+.linkbox p { font-size: 16px; line-height: 1.3; }
+.linkbox.wide { min-width: 300px; }
+.linkbox.wide .th { margin: 10px auto 14px; }
+
+/* powered-by badge */
+.navi {
+  position: fixed; bottom: 0; right: 5px; z-index: 20;
+  display: flex; align-items: center; gap: 4px;
+  width: 116px; height: 36px; padding: 1px 4px;
+  background: linear-gradient(#1b3a8c, #0a1a4a 60%, #10286a);
+  border: 1px solid #8ab;
+}
+.navi svg { width: 32px; height: 26px; flex: none; }
+.nb { display: flex; flex-direction: column; font-family: "Times New Roman", Times, serif; color: #fff; line-height: 1; text-align: center; flex: 1; }
+.nb small { font-size: 8px; font-weight: 700; }
+.nb b { font-size: 19px; font-weight: 400; }
+
+@media (max-width: 1100px) {
+  #layertag, #return { width: 34%; }
+}
+
+@media (max-width: 700px) {
+  body { padding-left: 92px; }
+  #linkcontainer { min-width: 64px; border-left-width: 6px; border-right-width: 6px; }
+  .layerlink, .layerlink0 { min-width: 0; font-size: 10px; padding: 2px; }
+  #banner { left: 76px; border-top-width: 6px; border-bottom-width: 6px; }
+  #pass { font-size: 1.35em; border-width: 4px; }
+  #layertag { width: 64%; height: 22px; border-left-width: 6px; border-bottom-width: 6px; }
+  #layertag h1 { font-size: 1.05em; border-width: 4px; }
+  #return { top: 22px; width: 64%; border-left-width: 6px; border-bottom-width: 6px; border-bottom-left-radius: 34px; }
+  #return a { font-size: 1.05em; border-width: 4px; border-bottom-left-radius: 34px; }
+  #boxes { padding: 78px 0 110px; }
+  .linkbox { margin: 14px 10px 14px 0; padding: 8px; border-width: 7px; max-width: calc(100% - 40px); box-shadow: 6px 6px 16px #000; }
+  .linkbox.wide { min-width: 0; }
+  .linkbox h3 { font-size: 1em; }
+  .linkbox p { font-size: 12px; word-break: break-all; }
+  .navi { transform: scale(.85); transform-origin: bottom right; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  #fade { display: none; }
+  #pass span { padding-left: 8px; }
+}
