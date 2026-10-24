@@ -26,6 +26,22 @@ One static HTML page. No framework, no build step, no server-side code, no third
 | `index.html` | `no-cache` (revalidated on every visit) |
 | CSS, JS, fonts, images | `public, max-age=86400` |
 
+```mermaid
+sequenceDiagram
+  participant B as Browser
+  participant E as CDN edge
+
+  B->>E: GET / (HTTPS only, HSTS)
+  E-->>B: 200 index.html + security headers
+  B->>E: GET style.css, fonts, img
+  E-->>B: 200, cached for 24 h
+
+  Note over B,E: Repeat visit
+  B->>E: GET / (If-None-Match)
+  E-->>B: 304 Not Modified
+  Note over B: assets served from browser cache
+```
+
 There is no build step, so filenames are not hashed. To push a change to an asset immediately, rename the file and update the reference in `index.html`.
 
 ## Performance
