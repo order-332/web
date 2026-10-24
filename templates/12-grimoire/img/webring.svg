@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 120" width="260" height="120">
+<defs><radialGradient id="glow" cx="50%" cy="60%" r="60%"><stop offset="0" stop-color="#ffd23a"/><stop offset=".5" stop-color="#ff7a00"/><stop offset="1" stop-color="#7a1500"/></radialGradient></defs>
+<rect width="260" height="120" fill="#000"/>
+<text x="130" y="22" text-anchor="middle" font-family="Times New Roman, serif" font-size="15" fill="#c00" stroke="#ff4a4a" stroke-width=".3">THE 332 WEBRING</text>
+<text x="130" y="38" text-anchor="middle" font-family="Times New Roman, serif" font-size="11" fill="#900">[ members tba ]</text>
+<g id="f">
+<path d="M22 62l14 8-14 4z M58 62l-14 8 14 4z" fill="url(#glow)"/>
+<path d="M20 86q20 18 40 0l-6 3-4-4-5 5-5-5-5 5-5-5-4 4z" fill="url(#glow)"/>
+</g>
+<use href="#f" transform="translate(90 6)"/>
+<use href="#f" transform="translate(180 0)"/>
+</svg>
