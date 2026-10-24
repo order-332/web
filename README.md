@@ -2,7 +2,7 @@
 
 The website for 332: a crew, a handle, a zine and a project at once.
 
-> Status: **planning.** No code yet. The stack (framework and hosting) is still open; see [open decisions](docs/architecture.md#open-decisions).
+> Status: **planning.** No code yet. The stack (framework and hosting) is still open; see [open decisions](docs/ARCHITECTURE.md#open-decisions).
 
 ## Requirements
 
@@ -10,7 +10,7 @@ The website for 332: a crew, a handle, a zine and a project at once.
 
 ## Docs
 
-- [docs/architecture.md](docs/architecture.md): how the site is put together, with diagrams.
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how the site is put together, with diagrams.
 - [docs/adr/](docs/adr/): Architecture Decision Records, one file per critical decision. Copy [0000-template.md](docs/adr/0000-template.md) to start one.
 - `docs/research/`: local research notes. Git ignores this folder, so it is never committed.
 
