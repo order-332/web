@@ -1,62 +1,67 @@
 # Architecture
 
-One static page. Plain HTML and CSS, no framework, no build step, no third-party requests. The host serves the files as they are in the repo.
-
-## System
-
-```mermaid
-flowchart LR
-  visitor([Visitor])
-  crew([Crew])
-
-  subgraph gh [GitHub · order-332]
-    repo[(web)]
-  end
-
-  host[("Static host")]
-
-  crew -- "pull request" --> repo
-  repo -- "merge to main" --> host
-  visitor -- "HTTPS" --> host
-```
+One static HTML page. No framework, no build step, no server-side code, no third-party requests.
 
 ## Files
 
-| File | What |
+| Path | Purpose |
 |---|---|
-| `index.html` | The page |
-| `style.css` | All styling |
-| `_headers` | Security headers and CSP, applied by the host |
+| `index.html` | Markup |
+| `style.css` | All styles, including effects |
+| `main.js` | Optional. Only if something needs JavaScript |
+| `fonts/` | Self-hosted WOFF2, subset to the glyphs used |
+| `img/` | Images and SVG |
+| `_headers` | HTTP response headers, applied by the host |
 
-JavaScript only if the page needs it, as a file of our own (`main.js`). Fonts and images are self-hosted.
+## Serving
 
-## Security
+- A static host serves the files over HTTPS from its CDN. No origin server, database or runtime.
+- Every response is a file from the repo. Nothing is generated per request.
+- The host compresses responses (Brotli, gzip).
 
-Security comes from the host's response headers and from having almost nothing to attack:
+## Caching
 
-- Strict CSP: `default-src 'none'`, then only our own files. No inline scripts or styles.
-- HSTS with preload, `nosniff`, `no-referrer`, a Permissions-Policy that turns everything off, and COOP/CORP `same-origin`.
-- No dependencies, no analytics, no CDNs, no embeds.
-- 2FA on the registrar, host and GitHub; DNSSEC and a CAA record on the domain.
+| Files | `Cache-Control` |
+|---|---|
+| `index.html` | `no-cache` (revalidated on every visit) |
+| CSS, JS, fonts, images | `public, max-age=86400` |
 
-Check with Mozilla HTTP Observatory and securityheaders.com after each deploy.
+There is no build step, so filenames are not hashed. To push a change to an asset immediately, rename the file and update the reference in `index.html`.
 
-## Release
+## Performance
 
-```mermaid
-sequenceDiagram
-  actor Dev as Crew
-  participant PR as Pull request
-  participant Host as Static host
+- `index.html` stays under 14 KB compressed, so it arrives in the first network round trip.
+- One stylesheet, loaded in `<head>`. Scripts use `defer`.
+- Fonts are preloaded and use `font-display: swap`.
+- Effects (scanlines, glitch, chroma) are CSS. Animations use only `transform` and `opacity` and stop under `prefers-reduced-motion`.
 
-  Dev->>PR: open
-  Host-->>PR: preview deploy
-  PR->>Host: merge to main
-  Host->>Host: deploy
-```
+## Security headers
+
+Set in `_headers` on every response:
+
+| Header | Value | Effect |
+|---|---|---|
+| `Content-Security-Policy` | `default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; require-trusted-types-for 'script'; upgrade-insecure-requests` | Only our own files load or run. No inline scripts or styles, no framing, no form posts, no HTML injection through DOM APIs. |
+| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` | HTTPS only, enforced by the browser for two years |
+| `X-Content-Type-Options` | `nosniff` | Files are only treated as their declared type |
+| `Referrer-Policy` | `no-referrer` | No referrer sent to other sites |
+| `Permissions-Policy` | `camera=(), microphone=(), geolocation=()` | Browser features the page doesn't use are off |
+| `Cross-Origin-Opener-Policy` | `same-origin` | Other sites can't hold a reference to our window |
+| `Cross-Origin-Resource-Policy` | `same-origin` | Other sites can't embed our files |
+
+Any change to the page that breaks under this CSP is changed to fit it; the CSP is not loosened.
+
+## Domain
+
+- HSTS preload list
+- DNSSEC
+- CAA record limited to the host's certificate authority
+
+## Verification
+
+After each deploy: Mozilla HTTP Observatory and securityheaders.com (target A+), PageSpeed Insights (target 100).
 
 ## Open decisions
 
-- **CTF:** a CTF platform we host (challenges, scoreboard, accounts) goes on its own subdomain as a separate app, never inside this site. Results or writeups would be content here instead; writeups are the point where a static site generator (Astro) becomes worth it.
 - **Host:** Cloudflare Pages or Netlify.
 - **Domain:** to be decided.
