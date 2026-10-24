@@ -1,0 +1,34 @@
+html{background:#07000f;color-scheme:dark}
+body{max-width:720px;margin:0 auto;padding:8px 0 24px;background:#07000f;color:#fff;
+  font:16px/1.25 Departure,"Lucida Console",monospace;letter-spacing:0}
+a{color:#6120ce}
+a:hover{color:#8a50ff}
+::selection{background:#6120ce;color:#fff}
+p{margin:18px 0}
+h1{font-size:20px;line-height:24px;font-weight:700;margin:20px 0}
+ul{margin:16px 0;padding-left:40px}
+li{margin:0}
+
+.bannerlink{text-decoration:none;color:#fff}
+.banner{position:relative;display:flex;justify-content:center;align-items:center;margin:10px 0 22px;height:110px;
+  font:78px/1 Frak,"Old English Text MT",serif;color:#fff;
+  text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000,3px 4px 0 #3a3344}
+.banner .w1{position:relative;z-index:1}
+.banner .w2{position:relative;z-index:1;margin-left:-16px;font-size:84px}
+.skel{position:relative;z-index:2;width:72px;height:108px;margin:-10px 0 0 -10px;transform:rotate(8deg)}
+
+.foot{display:flex;align-items:flex-end;gap:6px;margin-top:22px}
+.btn{display:flex;align-items:center;gap:3px;width:64px;height:24px;padding:1px 3px;background:#000;border:1px solid #9a9aa8;text-decoration:none}
+.mark{width:22px;height:12px;background:linear-gradient(160deg,#0000 0 30%,#3a4ad8 30% 55%,#0000 55%),linear-gradient(20deg,#6a7aff 0 40%,#0000 40%);
+  clip-path:polygon(0 100%,30% 20%,55% 60%,80% 0,100% 100%)}
+.bt{font:8px/1 Departure,monospace;color:#fff;text-align:right;flex:1}
+.foot a:last-child{font-size:15px}
+
+@media (max-width:760px){
+  body{padding:8px 14px 24px;font-size:15px}
+  .banner{font-size:40px;height:84px}
+  .banner .w2{font-size:46px;margin-left:-8px}
+  .skel{width:50px;height:75px}
+  h1{font-size:17px}
+  ul{padding-left:26px}
+}
