@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>332 // neo boxes</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+<canvas id="rain" aria-hidden="true"></canvas>
+<a class="skip" href="#welcome">skip to content</a>
+<header class="top">
+  <h1><img class="logo" src="logo.svg" width="210" height="78" alt="332"></h1>
+</header>
+
+<div class="wrap">
+  <main class="col-main">
+    <section class="box" id="welcome">
+      <h2><img src="moon.svg" width="24" height="24" alt="">Welcome to 332!</h2>
+      <div class="intro">
+        <figure class="pfp">
+          <img src="avatar.svg" width="100" height="100" alt="pixel avatar of a hooded figure">
+          <figcaption>+0.00 / -0.00</figcaption>
+        </figure>
+        <p>This is the little home of 332 on the web. It's inspired by all those old personal sites and neocities pages, the ones with too many boxes and not enough sleep.</p>
+        <p>332 is quite obviously a <span class="i">crew</span>. It's also a handle, a zine and a project, all at the same time. You can read more about it <a href="#projects">here</a>!</p>
+        <p>Some quick facts:</p>
+      </div>
+      <ul class="facts">
+        <li>332 is a crew. Members go by <a href="#">[handle]</a>, <a href="#">[handle]</a> and <a href="#">[handle]</a>.</li>
+        <li>332 is a handle, so sometimes "332" is one person and sometimes it's everyone.</li>
+        <li>332 is a zine. Issues land when they land, see the <a href="#zine">zine log</a>.</li>
+        <li>332 is a project. There's a <a href="https://ctf.order332.com/" target="_blank" rel="noopener">CTF</a> you can play right now.</li>
+        <li>We <span class="red">hate</span> bloated websites. This page has no trackers.</li>
+        <li>We like <span class="teal">late nights</span>, terminals and rain.</li>
+        <li>More facts are coming soon. [placeholder]</li>
+      </ul>
+    </section>
+    <div class="thanks" aria-label="thank you note"><span>THANK YOU TO EVERYONE WHO READS: <a href="#">[handle]</a>, <a href="#">[handle]</a>, <a href="#">[handle]</a>, <a href="#">[handle]</a> and you ☆</span></div>
+
+    <section class="box" id="zine">
+      <a class="rss" href="#zine" title="rss (soon)"><img src="rss.svg" width="16" height="16" alt="RSS"></a>
+      <h2><img src="moon.svg" width="24" height="24" alt="">Zine</h2>
+      <ul class="log">
+        <li><a href="#">issue 0x?? · tba</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">issue 0x?? · tba</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">issue 0x?? · tba</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">call for papers: write something for 332</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">colophon: how this site is built</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">[article tba]: notes from a long night</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">[article tba]: reading old txt files</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">[article tba]: a tiny tool, explained</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">[article tba]: why 332</a> <span class="dash">—</span> Posted on [date tba]</li>
+        <li><a href="#">hello world!</a> <span class="dash">—</span> Posted on [date tba]</li>
+      </ul>
+    </section>
+
+    <div class="chat">
+      <img src="avatar.svg" width="40" height="40" alt="">
+      <div>
+        <p class="who"><b>332</b> <span class="tag">BOT</span> <span class="when">Today at 03:32 AM</span></p>
+        <p>new issue soon. probably. keep an eye on <a href="#zine">the zine log</a></p>
+      </div>
+    </div>
+
+    <section class="box" id="projects">
+      <span class="side-tab" aria-hidden="true">332</span>
+      <h2><img src="moon.svg" width="24" height="24" alt="">Projects</h2>
+      <h3>☾ 332 CTF</h3>
+      <p>Capture the flag. Go break things, then tell us how. <a href="https://ctf.order332.com/" target="_blank" rel="noopener">Link</a></p>
+      <h3>☾ The zine</h3>
+      <p>Text-first issues in the old tradition. Articles, logs, art. Issue 0x?? · tba. <a href="#zine">Link</a></p>
+      <h3>☾ This website</h3>
+      <p>Static, hand-written, no frameworks, no third-party anything. Seven other looks exist: nfo, bbs, hexdump, glyph, globe, circuit, web. <a href="#">Link</a></p>
+      <h3>☾ [project]</h3>
+      <p>Coming soon. [placeholder] <a href="#">Link</a></p>
+      <h3>☾ [project]</h3>
+      <p>A small thing that does one weird job well. [placeholder] <a href="#">Link</a></p>
+      <h3>☾ [project]</h3>
+      <p>An experiment that may or may not survive. [placeholder] <a href="#">Link</a></p>
+      <p class="others"><b>And a couple of other things:</b></p>
+      <p class="tiny-links"><a href="#">[tool]</a> ☆ <a href="#">[script]</a> ☆ <a href="#">[writeup]</a> ☆ <a href="#">[toy]</a> ☆ <a href="#">[experiment]</a> ☆ <a href="#">[archive]</a> ☆ <a href="#">[placeholder]</a></p>
+    </section>
+
+    <span class="hotel" aria-hidden="true">サンサンニ</span>
+    <section class="box term">
+      <p class="sys">Systems status: <b>OK</b></p>
+      <div class="sysgrid">
+        <p>[ <b>OK</b> ] web</p><p>[ <b>OK</b> ] ctf</p>
+        <p>[ <b>OK</b> ] zine</p><p>[ <b>??</b> ] [node]</p>
+        <p>[ <b>OK</b> ] mail</p><p>[ <b>??</b> ] [node]</p>
+      </div>
+    </section>
+
+    <div class="pair">
+      <section class="box tile" aria-label="tile">
+        <div class="mini">
+          <span class="mini-logo">332</span>
+          <span class="mini-box"></span><span class="mini-box"></span>
+          <span class="mini-box w"></span>
+        </div>
+      </section>
+      <section class="box">
+        <p>Wow, check out what's on the left! It's a tiny 332 in a box.</p>
+        <p>Every site deserves a miniature of itself. This one is made of nothing but CSS and stubbornness.</p>
+        <p>The coolest part is that you can't break it, because there's nothing in it.</p>
+        <p><a href="#">Make your own tile!</a></p>
+      </section>
+    </div>
+  </main>
+
+  <aside class="col-side">
+    <section class="box nav">
+      <h2><img src="star.svg" width="27" height="27" alt="">Stars</h2>
+      <ul>
+        <li><a href="#welcome">Home</a></li>
+        <li><a href="#welcome">About the crew</a></li>
+        <li><a href="#">Log</a></li>
+        <li><a href="#">Gallery</a> <span class="red">(!)</span></li>
+        <li><a href="#zine">Zine</a></li>
+        <li><a class="here" href="#">Neocities page</a></li>
+        <li><a href="https://ctf.order332.com/" target="_blank" rel="noopener">CTF</a></li>
+        <li><a href="#">Guestbook</a></li>
+        <li><a href="#">[social]</a></li>
+        <li><a href="#">[social]</a></li>
+        <li><a href="#">[social]</a></li>
+        <li><a href="#">Source</a></li>
+        <li><a href="#">Support</a></li>
+        <li class="gap"><a href="#">Mood tracker</a> ☺</li>
+        <li><a href="#">Link ads</a></li>
+        <li><a href="#">Sigil gallery</a></li>
+        <li><a href="#">E-mail</a> ✉</li>
+      </ul>
+    </section>
+
+    <section class="box status-box">
+      <p>We're <span class="offline">OFFLINE!</span></p>
+    </section>
+
+    <section class="box song">
+      <p class="lh"><span class="blob"></span><b>Last song:</b></p>
+      <div class="track"><img src="record.svg" width="52" height="52" alt=""><p>[artist]<br>[track]</p></div>
+      <p class="dim">Played [sometime] ago</p>
+    </section>
+
+    <div class="buttons">
+      <a href="https://ctf.order332.com/" target="_blank" rel="noopener"><img src="btn-ctf.svg" width="88" height="31" alt="332 CTF"></a>
+      <img src="btn-any.svg" width="88" height="31" alt="best viewed with any browser">
+      <img src="btn-blank.svg" width="88" height="31" alt="your button here">
+      <img src="btn-332.svg" width="88" height="31" alt="332 button">
+      <span class="cool">⟵ cool sites</span>
+    </div>
+
+    <section class="box">
+      <p class="lh"><b>✧ Current status:</b></p>
+      <div class="cur"><img src="avatar.svg" width="32" height="32" alt=""><p><a href="#">332</a> • [time] ago<br>reading old txt files</p></div>
+    </section>
+
+    <section class="box moonbox">
+      <span class="plus">+</span><span class="q">?</span>
+      <div class="moonimg" id="moonimg"><span id="moonshade"></span></div>
+      <p>Phase: <span class="y" id="phase">…</span></p>
+      <p>Illum.: <span class="y" id="illum">…</span></p>
+      <p>Local time: <span class="y" id="clock">--:--:--</span></p>
+    </section>
+
+    <section class="box center">
+      <img class="mybtn" src="btn-332.svg" width="88" height="31" alt="332 button">
+      <p class="code" aria-label="button embed code">&lt;a href="[332 url]"&gt;&lt;img src="332.svg"&gt;&lt;/a&gt;</p>
+      <p class="dim">DO hotlink my button! [?]</p>
+    </section>
+
+    <section class="box center ring"><a href="#">⟵</a> [webring] <a href="#">⟶</a></section>
+
+    <section class="box visits">
+      <p><b>Visits:</b> <span class="digits">???????</span></p>
+      <p><b>Uniq. Visitors:</b> <span class="digits">???????</span></p>
+      <p><b>On-site:</b> <span class="digits">0000001</span></p>
+    </section>
+
+    <section class="box opts">
+      <label><input type="checkbox" id="opt-rain"> Disable rain</label>
+      <label><input type="checkbox" id="opt-fx"> Disable glow</label>
+      <label><input type="checkbox" id="opt-hotel"> Hide sign</label>
+    </section>
+
+    <img class="mascot" src="sigil.svg" width="96" height="96" alt="">
+  </aside>
+</div>
+
+<footer class="foot">
+  <p>(c) 2026 332. No Rights Reserved, probably.</p>
+  <p><a href="#">[contact tba]</a></p>
+</footer>
+</body>
+</html>
