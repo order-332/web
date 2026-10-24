@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30" width="100" height="30">
+<defs>
+<linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0a8ff"/><stop offset=".5" stop-color="#9a2bc8"/><stop offset="1" stop-color="#3c0a55"/></linearGradient>
+<linearGradient id="in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8e8e8"/><stop offset=".45" stop-color="#a5a5a5"/><stop offset=".55" stop-color="#7d7d7d"/><stop offset="1" stop-color="#d0d0d0"/></linearGradient>
+</defs>
+<rect x="1" y="1" width="98" height="28" rx="14" fill="url(#rim)" stroke="#20002e"/>
+<rect x="6" y="5" width="88" height="20" rx="10" fill="url(#in)" stroke="#333" stroke-width=".8"/>
+<text x="50" y="20" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="12" fill="#1a1a1a" stroke="#fff" stroke-width=".3">ABOUT US</text>
+</svg>

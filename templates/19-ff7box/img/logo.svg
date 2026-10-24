@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 84" width="170" height="84">
+<defs>
+<filter id="blob" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="3.5"/></filter>
+<pattern id="spk" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#7fd08e"/><rect x="1" y="1" width="1.4" height="1.4" fill="#c9f5cf"/><rect x="4" y="3.5" width="1.2" height="1.2" fill="#3f9a52"/></pattern>
+</defs>
+<g filter="url(#blob)" font-family="Arial Rounded MT Bold, Arial Black, Verdana, sans-serif" font-weight="900" text-anchor="middle" stroke-linejoin="round">
+<text x="85" y="36" font-size="34" fill="none" stroke="#0b2e14" stroke-width="7">@order</text>
+<text x="85" y="36" font-size="34" fill="url(#spk)" stroke="#bff3c8" stroke-width="1.4">@order</text>
+<text x="85" y="76" font-size="38" letter-spacing="2" fill="none" stroke="#0b2e14" stroke-width="7">332</text>
+<text x="85" y="76" font-size="38" letter-spacing="2" fill="url(#spk)" stroke="#bff3c8" stroke-width="1.4">332</text>
+</g>
+</svg>
