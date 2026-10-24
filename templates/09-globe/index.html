@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>332 // globe</title>
+<link rel="preload" href="../fonts/vga.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+<main class="gl" data-style="dots">
+  <canvas id="globe" aria-label="a dotted world you can turn; a magenta traceroute crosses it and ends at 332. drag to turn it, hover a hop to read it"></canvas>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="hex" aria-hidden="true" id="hex"></div>
+  <header class="top">
+    <h1 class="title">ORDER<span>332</span></h1>
+    <p class="meta" id="meta">lat 00.0 · lon 000.0 · 8 hops</p>
+  </header>
+  <nav class="pills" aria-label="globe style">
+    <button type="button" data-s="dots" aria-pressed="true">dots</button>
+    <button type="button" data-s="scan" aria-pressed="false">scan</button>
+    <button type="button" data-s="ascii" aria-pressed="false">ascii</button>
+  </nav>
+  <p class="hint">drag to turn · scroll to size</p>
+  <div class="tip" id="tip" hidden><b>332</b><span></span></div>
+</main>
+</body>
+</html>
