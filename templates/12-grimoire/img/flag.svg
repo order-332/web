@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126 126" width="126" height="126">
+<defs>
+<linearGradient id="fr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9cdd1"/><stop offset=".5" stop-color="#6c7176"/><stop offset="1" stop-color="#2b2e31"/></linearGradient>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d7fd6"/><stop offset="1" stop-color="#b7dcff"/></linearGradient>
+<linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1a1a"/><stop offset=".5" stop-color="#000"/><stop offset="1" stop-color="#3a0000"/></linearGradient>
+</defs>
+<rect width="126" height="126" fill="url(#fr)"/>
+<rect x="9" y="9" width="108" height="108" fill="url(#sky)" stroke="#1d1f21" stroke-width="2"/>
+<circle cx="13" cy="13" r="2" fill="#ddd"/><circle cx="113" cy="13" r="2" fill="#ddd"/><circle cx="13" cy="113" r="2" fill="#ddd"/><circle cx="113" cy="113" r="2" fill="#ddd"/>
+<rect x="24" y="22" width="4" height="88" fill="#ddd" stroke="#555"/>
+<circle cx="26" cy="21" r="4" fill="#e8c860"/>
+<path d="M28 28 q20 -8 40 0 t40 0 v46 q-20 -8 -40 0 t-40 0z" fill="url(#fl)" stroke="#000"/>
+<path d="M28 60 q20 -8 40 0 t40 0 v8 q-20 -8 -40 0 t-40 0z" fill="#c00"/>
+<text x="68" y="54" text-anchor="middle" font-family="Times New Roman, serif" font-weight="bold" font-size="22" fill="#e00">332</text>
+</svg>

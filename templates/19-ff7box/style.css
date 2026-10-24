@@ -1,0 +1,36 @@
+body,html{padding:0;margin:0;font-size:13px;background:#000;color:lime;font-family:"Source Code Pro",Consolas,"Lucida Console","Courier New",monospace}
+img{max-width:100%}
+a{color:red}
+::selection{background:lime;color:#000}
+
+.wrapper{margin:24px auto auto;max-width:100%}
+.logo{display:flex;justify-content:center}
+.logo img{display:block;width:170px;height:auto}
+
+.menu{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 8px;margin:14px 8px 24px;text-align:center}
+.menu a{color:lime;line-height:0}
+.menu img{width:auto}
+.m-about{height:30px}
+.m-zine{height:56px}
+.m-arch{width:280px;height:40px;object-fit:cover}
+.m-ctf{height:30px}
+.m-orb{height:35px;border:3px solid lime;background:#000}
+
+/* the FF7 menu window */
+.ff7{border:1px solid #424542;
+  box-shadow:1px 1px #e7dfe7,-1px -1px #e7dfe7,1px -1px #e7dfe7,-1px 1px #e7dfe7,0 -2px #9c9a9c,-2px 0 #7b757b,0 2px #424542;
+  z-index:10;overflow:auto;max-width:65%;margin:auto;position:relative;padding:10px 20px;
+  background:linear-gradient(#04009d 0%,#06004d 100%);border-radius:7px;line-height:1.23}
+.ff7 b{font-weight:700}
+.ff7 .new{width:auto;height:15px;vertical-align:-1px}
+
+.footer{margin-top:0;line-height:0}
+.footer img{display:block;width:64px;height:64px;animation:turn 3.2s linear infinite}
+@keyframes turn{to{transform:rotateY(360deg)}}
+
+@media (max-width:600px){
+  .ff7{max-width:78%;padding:10px 16px}
+  .m-arch{width:250px;height:36px}
+  .footer{margin-top:16px}
+}
+@media (prefers-reduced-motion:reduce){.footer img{animation:none}}
