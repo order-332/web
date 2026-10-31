@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15" width="22" height="15" shape-rendering="crispEdges">
-<path d="M5 1h4v1h1v1h2V2h1V1h4v1h1v1h1v4h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-2v-1H9v-1H8v-1H7V9H6V8H5V7H4V3h1V2z" fill="#ff2e88"/>
-<path d="M5 1h4v1h1v1h2V2h1V1h4v1h1v1h1v4h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-2v-1H9v-1H8v-1H7V9H6V8H5V7H4V3h1V2z" fill="none" stroke="#7a0038" stroke-width=".6"/>
-<rect x="6" y="3" width="2" height="2" fill="#ffc2dd"/>
-<g fill="#3a8cff">
-<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.5;.5;1" dur="0.8s" repeatCount="indefinite"/>
-<path d="M1 5h1v1h1v1h1V5h1v5H4V9H3V8H2v2H1zM7 5h3v1H8v1h2v1H8v1h2v1H7zM11 5h1v4h1V7h1v2h1V5h1v5h-1V9h-1v1h-1V9h-1v1h-1z"/>
-</g>
-</svg>

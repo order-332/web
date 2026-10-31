@@ -1,36 +1,56 @@
-body,html{padding:0;margin:0;font-size:13px;background:#000;color:lime;font-family:"Source Code Pro",Consolas,"Lucida Console","Courier New",monospace}
-img{max-width:100%}
-a{color:red}
-::selection{background:lime;color:#000}
+/* 332 // ff7 box: one window, everyone in it a number */
+:root{--black:#020503;--bone:#dfe8cf;--silver:#a7b59a;--dim:#7d8f76;--line:#2c3a2c;--acid:#b5ff41;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#000}
+body{display:grid;place-items:center;padding:3vh 12px;font:clamp(14px,1.05vw,16px)/1.4 VGA,Consolas,monospace;color:var(--bone)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 
-.wrapper{margin:24px auto auto;max-width:100%}
-.logo{display:flex;justify-content:center}
-.logo img{display:block;width:170px;height:auto}
+/* the window keeps the FF7 bevel and corners, on black */
+.chat{width:min(940px,100%);height:min(640px,100%);display:grid;grid-template-columns:minmax(0,1fr) 196px;grid-template-rows:auto minmax(0,1fr);overflow:hidden;background:var(--black);border-radius:7px;border:2px solid #dfe8cf;box-shadow:inset 0 0 0 1px #424542,0 0 0 1px #424542}
+.bar{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:8px 16px;border-bottom:1px solid var(--line)}
+.bar h1{font:400 26px/1 Frak,serif;color:var(--bone)}
+#status{font-size:.86em;color:var(--acid)}
 
-.menu{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 8px;margin:14px 8px 24px;text-align:center}
-.menu a{color:lime;line-height:0}
-.menu img{width:auto}
-.m-about{height:30px}
-.m-zine{height:56px}
-.m-arch{width:280px;height:40px;object-fit:cover}
-.m-ctf{height:30px}
-.m-orb{height:35px;border:3px solid lime;background:#000}
+/* the conversation */
+.talk{min-width:0;min-height:0;display:flex;flex-direction:column;border-right:1px solid var(--line)}
+.log{flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:auto;padding:14px 16px;scrollbar-width:thin;scrollbar-color:#51614e var(--black)}
+.msg{flex:none;display:grid;grid-template-columns:5ch minmax(0,1fr);gap:0 10px;margin-bottom:4px}
+.msg time{color:#5d6e58}
+.msg b{font-weight:400;margin-right:1ch;color:var(--acid)}
+.msg span{overflow-wrap:anywhere;color:var(--silver)}
+.mine b,.mine span{color:var(--bone)}
 
-/* the FF7 menu window */
-.ff7{border:1px solid #424542;
-  box-shadow:1px 1px #e7dfe7,-1px -1px #e7dfe7,1px -1px #e7dfe7,-1px 1px #e7dfe7,0 -2px #9c9a9c,-2px 0 #7b757b,0 2px #424542;
-  z-index:10;overflow:auto;max-width:65%;margin:auto;position:relative;padding:10px 20px;
-  background:linear-gradient(#04009d 0%,#06004d 100%);border-radius:7px;line-height:1.23}
-.ff7 b{font-weight:700}
-.ff7 .new{width:auto;height:15px;vertical-align:-1px}
+/* the input and the pointing glove */
+.say{flex:none;display:flex;align-items:center;gap:10px;padding:10px 16px 12px;border-top:1px solid var(--line)}
+.hand{flex:none;width:32px;height:auto;image-rendering:pixelated;filter:drop-shadow(2px 2px 0 #000)}
+#text{flex:1;min-width:0;padding:3px 0;font:inherit;color:var(--acid);caret-color:var(--acid);background:none;border:0;border-bottom:1px solid var(--dim);border-radius:0;outline:0}
+#text:focus{border-color:var(--acid)}
+.say button{flex:none;padding:3px 10px;font:inherit;color:var(--bone);background:var(--black);border:2px outset var(--silver);cursor:pointer;outline:0}
+.say button:hover,.say button:focus-visible{color:var(--black);background:var(--acid);border-color:var(--acid)}
 
-.footer{margin-top:0;line-height:0}
-.footer img{display:block;width:64px;height:64px;animation:turn 3.2s linear infinite}
-@keyframes turn{to{transform:rotateY(360deg)}}
+/* who is in the room */
+.people{min-height:0;display:flex;flex-direction:column}
+.crest{flex:none;display:block;width:100%;height:auto;padding:12px 14px 0}
+.people h2{flex:none;display:flex;justify-content:space-between;margin:10px 14px 0;padding:8px 0 6px;border-top:1px solid var(--line);font:inherit;font-size:.86em;color:var(--dim)}
+.people h2 span{color:var(--acid)}
+#members{flex:1;min-height:0;overflow-y:auto;padding:0 14px 12px;list-style:none;scrollbar-width:thin;scrollbar-color:#51614e var(--black)}
+#members li{display:flex;justify-content:space-between;gap:8px;padding:2px 0;color:var(--acid)}
+#members i{font-style:normal;font-size:.8em;color:var(--dim)}
+#members .mine{color:var(--bone)}
+#members .idle{color:var(--dim)}
+#members .me{min-width:0;font:inherit;color:inherit;background:none;border:0;cursor:text;outline:0;text-decoration:underline dotted transparent;text-underline-offset:3px}
+#members .me:hover,#members .me:focus-visible{color:var(--acid);text-decoration-color:var(--acid)}
+.mine b{cursor:text}
+.mine b:hover{color:var(--acid)}
+.rename{min-width:0;width:12ch;font:inherit;color:var(--acid);caret-color:var(--acid);background:none;border:0;border-bottom:1px solid var(--acid);border-radius:0;outline:0}
 
-@media (max-width:600px){
-  .ff7{max-width:78%;padding:10px 16px}
-  .m-arch{width:250px;height:36px}
-  .footer{margin-top:16px}
+@media (max-width:680px){
+  body{padding:8px}
+  .chat{height:100%;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr)}
+  .people{grid-row:2;flex-direction:row;align-items:center;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+  .people h2{margin:0;padding:0;gap:6px;border:0}
+  #members{display:flex;gap:12px;padding:0;overflow-x:auto;overflow-y:hidden;white-space:nowrap}
+  #members li{gap:4px;padding:0}
+  .talk{grid-row:3;border-right:0}
+  .crest{width:40px;padding:0}
 }
-@media (prefers-reduced-motion:reduce){.footer img{animation:none}}
