@@ -3,7 +3,7 @@ const frame = document.getElementById("v");
 const bar = document.getElementById("bar");
 const buttons = [...document.querySelectorAll("#list button")];
 const ids = buttons.map(b => b.dataset.t);
-let i = Math.max(0, ids.findIndex(id => id.startsWith(location.hash.slice(1) || "03")));
+let i = Math.max(0, ids.findIndex(id => id.startsWith(location.hash.slice(1) || "04")));
 const show = n => {
   i = (n + ids.length) % ids.length;
   frame.src = ids[i] + "/";
