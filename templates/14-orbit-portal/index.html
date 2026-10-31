@@ -3,46 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico">
 <title>332 // orbit portal</title>
 <link rel="stylesheet" href="../fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../shared/grave.css">
 <script src="main.js" defer></script>
 </head>
 <body>
 <div class="site">
 
 <header class="topbar">
-  <a class="logo" href="#">
-    <svg class="globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M5 6c3 1 2 4 5 4s1 4 3 5-1 4 0 6M15 3c-1 2 1 3 3 3s2 3 4 3"/></svg>
-    <span>order332<i>.world</i></span>
-  </a>
-  <div class="dome" aria-hidden="true">
-    <svg viewBox="0 0 280 64"><path class="d1" d="M2 0 C20 60 260 60 278 0"/><path class="d2" d="M40 0 C55 44 225 44 240 0"/><path class="d3" d="M80 0 C90 30 190 30 200 0"/><path class="d4" d="M118 0 C122 24 158 24 162 0"/><path class="eye" d="M112 30 Q140 12 168 30 Q140 48 112 30Z"/><circle class="iris" cx="140" cy="30" r="8"/><circle class="pupil" cx="140" cy="30" r="2.6"/></svg>
-  </div>
+  <a class="logo" href="#">Order 332<i>.world</i></a>
   <div class="ctl">
-    <button class="ico" id="pause" type="button" aria-label="pause animation" aria-pressed="false"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/></svg></button>
-    <button class="ico" id="power" type="button" aria-label="power" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 3v8M6.6 6.6a8 8 0 1 0 10.8 0"/></svg></button>
+    <button class="ico" id="pause" type="button" aria-pressed="false">pause</button>
+    <button class="ico" id="power" type="button" aria-pressed="false">power</button>
   </div>
 </header>
 
 <div class="layout">
   <aside class="col side l">
     <section class="win">
-      <div class="wt"><h2>latest entry</h2><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="3" cy="13" r="2"/><path d="M1 7a8 8 0 0 1 8 8M1 2a13 13 0 0 1 13 13"/></svg></div>
+      <h2 class="wt">latest entry</h2>
       <div class="entry">
-        <div class="etext">
-          <p class="edate">--/--/2026, --:--</p>
-          <p class="etitle">[new zine] issue 0x?? · tba</p>
-          <p class="tags"><a href="#">#zine</a> <a href="#">#tba</a></p>
-        </div>
-        <span class="bubble"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2C4 2 1 4.4 1 7.5c0 1.6.8 3 2.1 4L2.5 14l3.2-1.5c.7.2 1.5.3 2.3.3 4 0 7-2.4 7-5.3S12 2 8 2z"/></svg>0</span>
-        <span class="vtab">ZINE</span>
+        <p class="edate">--/--/2026, --:--</p>
+        <p class="etitle">[new zine] issue 0x?? · tba</p>
+        <p class="tags"><a href="#">#zine</a> <a href="#">#tba</a></p>
       </div>
       <a class="all" href="#">view all</a>
     </section>
 
-    <section class="win tex">
-      <div class="wt"><h2>changelog</h2><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 3h14M1 8h14M1 13h14"/></svg></div>
+    <section class="win">
+      <h2 class="wt">changelog</h2>
       <ul class="log">
         <li><time>xx/xx/2026</time> Add placeholder copy to the crew page.</li>
         <li><time>xx/xx/2026</time> Minor update to the info and sitemap pages.</li>
@@ -59,67 +51,66 @@
     </section>
   </aside>
   <div class="center">
-<main class="portal">
+<main class="portal" id="portal">
   <h1 class="sr">332</h1>
-  <div class="arc" aria-hidden="true"></div>
-  <nav class="stage" aria-label="sections">
-    <svg class="leads" viewBox="0 0 1424 800" aria-hidden="true"><line x1="285" y1="230" x2="308" y2="260"/><line x1="510" y1="189" x2="521" y2="204"/><line x1="731" y1="170" x2="717" y2="191"/><line x1="944" y1="206" x2="915" y2="236"/><line x1="1040" y1="278" x2="1034" y2="290"/><line x1="570" y1="326" x2="612" y2="373"/><line x1="1035" y1="410" x2="1051" y2="432"/><line x1="923" y1="482" x2="901" y2="510"/><line x1="462" y1="506" x2="476" y2="528"/><line x1="645" y1="709" x2="670" y2="730"/></svg>
-    <a class="pl p-sysop" href="#"><span class="orb"></span><span class="lbl">sysop</span></a>
-    <a class="pl p-archive" href="#"><span class="orb"></span><span class="lbl">archive</span></a>
-    <a class="pl p-crew" href="#"><span class="orb"></span><span class="lbl">crew</span></a>
-    <a class="pl p-issues" href="#"><span class="orb"></span><span class="lbl">issues</span></a>
-    <a class="pl p-lab" href="#"><span class="orb"></span><span class="lbl">laboratory</span></a>
-    <a class="pl p-projects" href="#"><span class="orb"></span><span class="lbl">projects</span></a>
-    <a class="pl p-arts" href="#"><span class="orb"></span><span class="lbl">artifacts</span></a>
-    <a class="pl p-foryou" href="#"><span class="orb"></span><span class="lbl">for-you</span></a>
-    <a class="pl p-guest" href="#"><span class="orb"></span><span class="lbl">guestbook</span></a>
-    <a class="pl p-q" href="https://ctf.order332.com/" target="_blank" rel="noopener"><span class="orb"></span><span class="lbl">???</span></a>
+  <canvas class="sky" id="sky" aria-hidden="true"></canvas>
+  <svg class="rings" id="rings" aria-hidden="true"></svg>
+  <p class="meta" aria-hidden="true">orbit // seed=0x14C // 10 bodies</p>
+  <pre class="hex" id="hex" aria-hidden="true"></pre>
+  <nav class="stage" id="stage" aria-label="sections">
+    <a class="pl" href="#" data-ring="0" data-at="200" data-size="38" data-tex="band" data-ink="bone"><canvas class="orb"></canvas><span class="lbl">sysop</span></a>
+    <a class="pl" href="#" data-ring="0" data-at="30" data-size="28" data-tex="rock"><canvas class="orb"></canvas><span class="lbl">for-you</span></a>
+    <a class="pl" href="#" data-ring="1" data-at="130" data-size="52" data-tex="crater"><canvas class="orb"></canvas><span class="lbl">crew</span></a>
+    <a class="pl" href="#" data-ring="1" data-at="255" data-size="44" data-tex="rock"><canvas class="orb"></canvas><span class="lbl">issues</span></a>
+    <a class="pl" href="#" data-ring="1" data-at="10" data-size="30" data-tex="band"><canvas class="orb"></canvas><span class="lbl">projects</span></a>
+    <a class="pl" href="#" data-ring="2" data-at="65" data-size="62" data-tex="band"><canvas class="orb"></canvas><span class="lbl">archive</span></a>
+    <a class="pl" href="#" data-ring="2" data-at="325" data-size="48" data-tex="crater" data-ink="bone"><canvas class="orb"></canvas><span class="lbl">laboratory</span></a>
+    <a class="pl" href="#" data-ring="2" data-at="175" data-size="38" data-tex="rock"><canvas class="orb"></canvas><span class="lbl">artifacts</span></a>
+    <a class="pl" href="#" data-ring="2" data-at="222" data-size="38" data-tex="crater"><canvas class="orb"></canvas><span class="lbl">guestbook</span></a>
+    <a class="pl p-q" href="https://ctf.order332.com/" target="_blank" rel="noopener" data-ring="3" data-at="110" data-size="24" data-tex="rock" data-ink="bone"><canvas class="orb"></canvas><span class="lbl">???</span></a>
   </nav>
 
-  <a class="badge" href="#" aria-label="332 button"><span>order</span><b>332</b></a>
+  <p class="lock" id="lock" aria-hidden="true">no lock</p>
   <ul class="pills">
-    <li><a href="#"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7"/><path class="cut" d="M8 7v5M8 4.2v.1"/></svg>info</a></li>
-    <li><a href="#"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15s5-5.5 5-9A5 5 0 0 0 3 6c0 3.5 5 9 5 9z"/><circle class="cut" cx="8" cy="6" r="1.8"/></svg>sitemap</a></li>
-    <li><a href="#"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7"/><path class="cut" d="M10.5 6a3 3 0 1 0 0 4"/></svg>credits</a></li>
-    <li><a href="#"><svg viewBox="0 0 16 16" aria-hidden="true"><path class="ln" d="M7 9l2-2M6 6.5L4.5 8a2.5 2.5 0 0 0 3.5 3.5L9.5 10M10 9.5L11.5 8A2.5 2.5 0 0 0 8 4.5L6.5 6"/></svg>links</a></li>
+    <li><a href="#">info</a></li>
+    <li><a href="#">sitemap</a></li>
+    <li><a href="#">credits</a></li>
+    <li><a href="#">links</a></li>
   </ul>
 </main>
-<p class="diag"><span>hits:</span> <b>------</b> <span>views:</span> <b>------</b> <span>created:</span> <b>tba</b> <span>last updated:</span> <b id="upd">--/--/----</b></p>
+<p class="diag"><span>hits:</span> <b>------</b> <span>views:</span> <b>------</b> <span>created:</span> <b>tba</b> <span>last updated:</span> <b id="upd">--/--/----</b> <i class="note">best viewed with your eyes open</i></p>
   </div>
   <aside class="col side r">
     <section class="win">
-      <div class="wt"><h2>status</h2><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l2 5h5l-4 3.2 1.6 5L8 11l-4.6 3.2L5 9.2 1 6h5z"/></svg></div>
+      <h2 class="wt">status</h2>
       <div class="status">
-        <p><a href="#">[handle]</a> <span class="mini" aria-hidden="true">▣</span> <span class="ago">-- ago</span> <span class="mood">♥ tba</span></p>
+        <p><a href="#">[handle]</a> <span class="ago">-- ago</span> <span class="mood">tba</span></p>
         <p class="said">status line goes here. somebody is always reading the ones nobody posts.</p>
       </div>
     </section>
 
-    <section class="win tex">
-      <div class="wt"><h2>transmission</h2><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg></div>
+    <section class="win">
+      <h2 class="wt">transmission</h2>
       <p class="tx">"THREE, THREE, TWO. COUNT IT AGAIN. THE NUMBER DOESN'T ADD UP TO WHAT YOU THINK IT DOES."</p>
     </section>
 
-    <section class="win tex">
-      <div class="wt"><h2>artifacts</h2><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5l6-3 6 3-6 3zM2 5v6l6 3 6-3V5M8 8v6"/></svg></div>
+    <section class="win">
+      <h2 class="wt">artifacts</h2>
       <div class="shelf">
-        <span class="b88 b-nfo">332<small>.NFO</small></span>
-        <span class="b88 b-valid"><b>BBS</b><i>VALID</i></span>
-        <span class="b88 b-hex">0x14C</span>
-        <span class="b88 b-glyph">GLYPH</span>
-        <span class="b88 b-adv"><b>PARENTAL</b>HEX ADVISORY</span>
-        <a class="b88 b-ctf" href="https://ctf.order332.com/" target="_blank" rel="noopener">CTF&nbsp;▶</a>
-        <span class="b88 b-zine">ZINE<small>tba</small></span>
-        <span class="b88 b-globe">GLOBE</span>
-        <span class="b88 b-circ">CIRCUIT</span>
-        <span class="b88 b-web">I <b>♥</b> WEB</span>
+        <a class="b88" href="../04-bbs/">BBS</a>
+        <a class="b88 inv" href="../10-circuit/">CIRCUIT</a>
+        <a class="b88 frak" href="../12-grimoire/">Grimoire</a>
+        <a class="b88" href="../15-wired-program/">WIRED</a>
+        <a class="b88 inv" href="../19-ff7box/">FF7 BOX</a>
+        <a class="b88 frak" href="../20-gothic-linklist/">Gothic</a>
+        <a class="b88 dith" href="https://ctf.order332.com/" target="_blank" rel="noopener">CTF</a>
+        <span class="b88">ZINE <small>tba</small></span>
       </div>
       <a class="all" href="#">view all</a>
     </section>
   </aside>
 </div>
 
-<footer class="foot">order332 // a crew, a handle, a zine, a project // best viewed with your eyes open</footer>
 </div>
 </body>
 </html>
