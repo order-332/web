@@ -1,13 +1,13 @@
 *{box-sizing:border-box}
-html{background:#000}
-body{margin:8px;background:#000;color:red;font-family:"Times New Roman",Times,serif}
+html{background:#020503}
+body{margin:8px;background:#020503;color:#79dd27;font-family:"Times New Roman",Times,serif}
 img{display:block}
-a{color:#8b0000;text-decoration:none}
-a:hover{color:red}
-::selection{background:#8b0000;color:#000}
+a{color:#2c7620;text-decoration:none}
+a:hover{color:#79dd27}
+::selection{background:#2c7620;color:#020503}
 
 /* blackletter title */
-.title{margin:44px 0 6px;text-align:center;font:400 clamp(26px,3.3vw,44px)/1 Frak,"Old English Text MT",serif;color:#e00000;letter-spacing:.02em;text-shadow:0 0 2px #ff2a1a,0 2px 0 #3a0000,0 0 14px #7a000088,0 4px 10px #000}
+.title{margin:44px 0 6px;text-align:center;font:400 clamp(26px,3.3vw,44px)/1 Frak,"Old English Text MT",serif;color:#61c525;letter-spacing:.02em;text-shadow:0 0 2px #8ae928,0 2px 0 #0d2d12,0 0 14px #23661f88,0 4px 10px #020503}
 
 /* the book: a leather cover hinged on the spine that swings open and shut */
 .tome{display:flex;flex-direction:column;align-items:center;margin:0 auto}
@@ -17,85 +17,39 @@ a:hover{color:red}
 .block{display:none}
 /* right board + page block */
 .book::before{content:"";position:absolute;left:50%;right:0;top:0;bottom:0;border-radius:2px 12px 12px 2px;
-  background:radial-gradient(ellipse at 40% 30%,#5e3317,#3a1a08 60%,#1e0c03);box-shadow:0 0 0 2px #120600,0 14px 40px #000,inset 0 0 14px #000}
-.page{background:url(img/parchment.svg) 0 0/100% 100%;display:flex;align-items:center}
-.page.r{position:absolute;left:50%;right:14px;top:12px;bottom:14px;mask:url(img/mask-r.svg) 0 0/100% 100%;padding-left:5%;
-  box-shadow:inset 0 0 30px #6a3a1244}
-.page.r::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#2a140488,#5a300f33 6%,#0000 20%)}
+  background:radial-gradient(ellipse at 40% 30%,#22631f,#113815 60%,#081c0d);box-shadow:0 0 0 2px #061309,0 14px 40px #020503,inset 0 0 14px #020503}
+  box-shadow:inset 0 0 30px #29711f44}
 /* page edges peeking out under the right page */
 .book::after{content:"";position:absolute;right:9px;top:16px;bottom:9px;width:8px;border-radius:0 4px 4px 0;
-  background:repeating-linear-gradient(90deg,#d8c39a 0 1px,#8a6a3e 1px 2px);box-shadow:0 0 4px #000}
+  background:repeating-linear-gradient(90deg,#b2bfa4 0 1px,#4aa723 1px 2px);box-shadow:0 0 4px #020503}
 /* the cover */
 .cover{position:absolute;left:50%;top:0;bottom:0;width:50%;transform-origin:0 50%;transform-style:preserve-3d;z-index:2;
   transition:transform 1.1s cubic-bezier(.6,.05,.25,1)}
 .tome.open .cover{transform:rotateY(-180deg)}
 .front,.cover::after,.page.back{position:absolute;inset:0;backface-visibility:hidden}
 .front{display:grid;place-items:center;margin:0;padding:0;border:0;cursor:pointer;font:inherit;color:inherit;border-radius:2px 12px 12px 2px;
-  background:radial-gradient(ellipse at 45% 35%,#6a3a1a,#3c1a08 55%,#1a0a02),#3c1a08;
-  box-shadow:0 0 0 2px #120600,0 14px 40px #000,inset 0 0 0 10px #2a1206,inset 0 0 0 12px #8a6a2c,inset 0 0 0 16px #2a1206,inset 0 0 0 17px #6a4a1c,inset 0 0 40px #000}
-.front::before{content:"";position:absolute;left:0;top:0;bottom:0;width:22px;background:linear-gradient(90deg,#0c0400,#3a1a08 60%,#0000);border-radius:2px 0 0 2px}
-.emboss{position:relative;font:700 clamp(46px,11vh,110px)/1 "Times New Roman",serif;letter-spacing:.06em;color:#7a5a24;
-  text-shadow:0 1px 0 #c9a14a66,0 -1px 0 #000,0 0 18px #000;transform:translateY(-6%)}
-.emboss::before{content:"";position:absolute;left:50%;top:50%;width:1.9em;aspect-ratio:1;transform:translate(-50%,-50%);border:2px solid #6a4a1c88;border-radius:50%;
-  box-shadow:inset 0 0 0 6px #2a120688,inset 0 0 0 8px #6a4a1c55}
-.clasp{position:absolute;right:-6px;top:44%;width:30px;height:12%;border-radius:4px;background:linear-gradient(#b08a3c,#6a4a1c 45%,#3a2a10);box-shadow:0 2px 6px #000}
-.front:hover .emboss,.front:focus-visible .emboss{color:#b0001a;text-shadow:0 0 12px #ff000088,0 -1px 0 #000}
-.front:focus-visible{outline:2px solid #b0001a;outline-offset:4px}
+  background:radial-gradient(ellipse at 45% 35%,#2a721f,#123a16 55%,#07190b),#123a16;
+  box-shadow:0 0 0 2px #061309,0 14px 40px #020503,inset 0 0 0 10px #0b2711,inset 0 0 0 12px #48a623,inset 0 0 0 16px #0b2711,inset 0 0 0 17px #2d7920,inset 0 0 40px #020503}
+.front::before{content:"";position:absolute;left:0;top:0;bottom:0;width:22px;background:linear-gradient(90deg,#040e07,#113815 60%,#02050300);border-radius:2px 0 0 2px}
+.emboss{position:relative;font:700 clamp(46px,11vh,110px)/1 "Times New Roman",serif;letter-spacing:.06em;color:#399021;
+  text-shadow:0 1px 0 #8eeb2866,0 -1px 0 #020503,0 0 18px #020503;transform:translateY(-6%)}
+.emboss::before{content:"";position:absolute;left:50%;top:50%;width:1.9em;aspect-ratio:1;transform:translate(-50%,-50%);border:2px solid #2d792088;border-radius:50%;
+  box-shadow:inset 0 0 0 6px #0b271188,inset 0 0 0 8px #2d792055}
+.clasp{position:absolute;right:-6px;top:44%;width:30px;height:12%;border-radius:4px;background:linear-gradient(#6fd626,#2d7920 45%,#133f17);box-shadow:0 2px 6px #020503}
+.front:hover .emboss,.front:focus-visible .emboss{color:#409b22;text-shadow:0 0 12px #79dd2788,0 -1px 0 #020503}
+.front:focus-visible{outline:2px solid #409b22;outline-offset:4px}
 /* inside of the cover: leather board with the left page on it */
 .cover::after{content:"";transform:rotateY(180deg);border-radius:12px 2px 2px 12px;
-  background:radial-gradient(ellipse at 60% 30%,#5e3317,#3a1a08 60%,#1e0c03);box-shadow:inset 0 0 14px #000}
-.page.back{inset:12px 0 14px 14px;transform:rotateY(180deg) translateZ(1px);mask:url(img/mask-l.svg) 0 0/100% 100%;padding-left:6%;z-index:1}
-.page.back::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,#2a140488,#5a300f33 6%,#0000 20%)}
-.page ul{position:relative;z-index:1;list-style:none;margin:0;padding:0}
-.page li{margin:0}
-.page a{display:flex;align-items:center;white-space:nowrap;font:400 clamp(15px,3.3vh,30px)/1.4 "Perpetua Titling MT","Copperplate Gothic Light",Copperplate,"Times New Roman",serif;font-variant:small-caps;color:#8b0000;text-shadow:0 .2vh 0 #000}
-.page a:hover{color:red}
-.page a img{width:clamp(24px,5vh,40px);height:clamp(24px,5vh,40px);flex:none}
-.shut{margin:14px 0 0;background:none;border:0;cursor:pointer;color:#8b0000;font:400 15px "Times New Roman",serif;font-variant:small-caps;letter-spacing:.08em}
-.shut::before{content:"✠ "}.shut:hover{color:red}
+  background:radial-gradient(ellipse at 60% 30%,#22631f,#113815 60%,#081c0d);box-shadow:inset 0 0 14px #020503}
+.shut{margin:14px 0 0;background:none;border:0;cursor:pointer;color:#2c7620;font:400 15px "Times New Roman",serif;font-variant:small-caps;letter-spacing:.08em}
+.shut::before{content:"✠ "}.shut:hover{color:#79dd27}
 .tome:not(.open) .shut::after{content:""}
 .tome:not(.open) .shut{visibility:hidden}
 
-/* centered column */
-.main{display:flex;flex-direction:column;align-items:center;width:min(60%,900px);margin:0 auto 40px}
-.blood{width:min(638px,100%);height:auto;margin-top:22px}
-.blood.narrow{width:min(700px,100%)}
-.emblem{width:221px;height:auto;margin-top:18px}
-.wings{width:196px;height:auto;margin:10px 0}
-.main p{margin:14px;color:#8b0000;font:400 clamp(17px,2.6vw,38px)/1.18 "Times New Roman",serif;font-variant:small-caps;letter-spacing:.035em;text-align:center;text-shadow:0 0 1px #300}
-.main p b{font-weight:400;color:#b00000}
-.main p.small{font-size:clamp(16px,2.2vw,32px)}
-.main p u{text-underline-offset:4px}
-.main p.label{font-size:clamp(18px,2vw,28px);margin-bottom:6px}
-.spin{display:inline-block;color:#2a3dff;text-shadow:0 0 4px #00f;margin-right:6px;animation:spin 2.4s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.banner img{width:min(468px,92vw);height:auto;border:0}
-.gb img{width:100px;height:auto;margin:20px 0}
 
-/* 88x31 buttons */
-.buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}
-.btn{display:flex;flex-direction:column;justify-content:center;align-items:center;width:88px;height:31px;font:700 11px/1 Verdana,sans-serif;color:#fff;border:1px solid #000;overflow:hidden}
-.btn span{font:400 8px/1.1 Verdana,sans-serif;letter-spacing:.05em;color:#ddd}
-.b1{background:linear-gradient(#3a0000,#900 50%,#200);color:#ffd84a}
-.b2{background:#000;color:#3f3;font-family:"Courier New",monospace;box-shadow:inset 0 0 0 2px #0a0}
-.b3{background:linear-gradient(90deg,#222,#555,#222);color:#e0d8c0}
-.b4{background:radial-gradient(circle at 30% 40%,#3a6cff,#0a0f40 70%);color:#fff}
-.b5{background:repeating-linear-gradient(90deg,#1b3d16 0 3px,#0e220b 3px 6px);color:#9f9}
-.btn:hover{filter:brightness(1.4);color:inherit}
 
-/* countdown */
-.timer{display:flex;align-items:center;justify-content:center;gap:4px;max-width:700px;margin-top:14px;padding:10px;background:#000;opacity:.9;box-shadow:inset 0 0 10px #000;font:12.8px/1.3 "Comic Sans MS","Comic Neue",cursive;color:red}
-.timer img{width:38px;height:35px;flex:none}
 
-/* webring */
-.ring{margin-top:16px;border:4px solid #c00;background:#000;width:268px}
-.ring img{width:260px;height:120px}
-.ringnav{display:flex}
-.ringnav a{flex:1;height:32px;display:flex;align-items:center;justify-content:center;font:12px "Comic Sans MS",cursive;color:red;border:1px solid #600;background:linear-gradient(#200,#000)}
-.ringnav a:hover{background:#400;color:#ffd84a}
 
-.midi{margin:22px 0 10px;text-align:center;font:700 11px Verdana,sans-serif;color:#c00}
-.midi span{font-weight:400;color:#700}
 
 /* phone: the book turns on its side, pages stack */
 @media (max-width:640px){
@@ -105,28 +59,76 @@ a:hover{color:red}
   .tome:not(.open) .book{transform:translateY(-25%)}
   .tome:not(.open){margin-bottom:calc(var(--w,92vw) * -0.75)}
   .book::before{left:0;top:50%;border-radius:2px 2px 12px 12px}
-  .book::after{right:16px;left:16px;top:auto;bottom:8px;width:auto;height:8px;background:repeating-linear-gradient(180deg,#d8c39a 0 1px,#8a6a3e 1px 2px);border-radius:0 0 4px 4px}
-  .page.r{left:12px;right:12px;top:50%;bottom:14px;padding:0;justify-content:center;mask:url(img/mask-b.svg) 0 0/100% 100%}
-  .page.r::after{background:linear-gradient(180deg,#2a140488,#5a300f33 6%,#0000 20%)}
+  .book::after{right:16px;left:16px;top:auto;bottom:8px;width:auto;height:8px;background:repeating-linear-gradient(180deg,#b2bfa4 0 1px,#4aa723 1px 2px);border-radius:0 0 4px 4px}
   .cover{left:0;top:50%;width:100%;height:50%;bottom:auto;transform-origin:50% 0}
   .tome.open .cover{transform:rotateX(180deg)}
   .front{border-radius:2px 2px 12px 12px}
-  .front::before{left:0;right:0;width:auto;height:22px;bottom:auto;background:linear-gradient(180deg,#0c0400,#3a1a08 60%,#0000)}
+  .front::before{left:0;right:0;width:auto;height:22px;bottom:auto;background:linear-gradient(180deg,#040e07,#113815 60%,#02050300)}
   .clasp{right:auto;left:44%;top:auto;bottom:-6px;width:12%;height:30px}
   .cover::after{transform:rotateX(180deg);border-radius:12px 12px 2px 2px}
-  .page.back{inset:14px 12px 0 12px;transform:rotateX(180deg) translateZ(1px);padding:0;justify-content:center;mask:url(img/mask-t.svg) 0 0/100% 100%}
-  .page.back::after{background:linear-gradient(0deg,#2a140488,#5a300f33 6%,#0000 20%)}
-  .page a{font-size:20px;line-height:1.5}
-  .page a img{width:28px;height:28px;margin-right:4px}
-  .main{width:92%}
-  .main p{font-size:21px;margin:12px 4px}
-  .main p.small{font-size:19px}
 }
-@media (prefers-reduced-motion:reduce){.spin{animation:none}.book,.cover{transition:none}}
-.main p a.u{display:inline;color:#8b0000;text-decoration:underline;text-underline-offset:4px}
-.flag{width:126px;height:126px;margin:4px 0 10px}
-.player{display:flex;align-items:center;gap:10px;width:min(300px,90%);height:46px;margin-top:22px;padding:0 18px;border-radius:23px;background:#f1f3f4;color:#222;font:12px Arial,sans-serif}
-.player .bar{flex:1;height:4px;border-radius:2px;background:#c7c7c7}
-.player .play{font-size:12px}
-.midi{font-size:10px;margin-top:8px}
-.midi a{color:#700;font-weight:400;display:inline}
+
+/* grave-green: black leather, silver tooling, bone pages, green only as ink */
+body{color:#b5ff41}
+a{color:#b5ff41}a:hover{color:#e2ead2}
+.title{color:#e2ead2;text-shadow:3px 3px #0a2410}
+.book::before,.cover::after{background:radial-gradient(ellipse at 40% 30%,#101a12,#060b07 60%,#020503)}
+.front{background:radial-gradient(ellipse at 45% 35%,#141f16,#070c08 55%,#020503);box-shadow:0 0 0 2px #000,0 14px 40px #000,inset 0 0 0 10px #050805,inset 0 0 0 12px #65755f,inset 0 0 0 16px #050805,inset 0 0 0 17px #2c3a2c,inset 0 0 40px #000}
+.front::before{background:linear-gradient(90deg,#000,#0c1610 60%,#0000)}
+.emboss{color:#a7b59a;text-shadow:0 1px 0 #2c3a2c,0 -1px 0 #000}
+.emboss::before{border-color:#65755f;box-shadow:inset 0 0 0 6px #0a1f12,inset 0 0 0 8px #2c3a2c}
+.front:hover .emboss,.front:focus-visible .emboss{color:#b5ff41;text-shadow:2px 2px #0a2410}
+.clasp{background:linear-gradient(#a7b59a,#51614e 45%,#2c3a2c)}
+.shut{color:#a7b59a}.shut:hover{color:#b5ff41}
+.emboss{display:block;width:74%;transform:none}
+.emboss::before{display:none}
+.emboss img{display:block;width:100%;height:auto;mix-blend-mode:screen;mask:radial-gradient(closest-side,#000 84%,#0000)}
+.front:hover .emboss img,.front:focus-visible .emboss img{filter:sepia(1) hue-rotate(58deg) saturate(3)}
+
+/* the open book: black vellum, silver ink, numerals rubricated in green */
+.book::after{background:repeating-linear-gradient(90deg,#65755f 0 1px,#0a100b 1px 3px);box-shadow:none}
+.page{background:radial-gradient(ellipse at 50% 42%,#0d140f,#060a07 70%,#030504);overflow:hidden}
+.page::before{content:"";position:absolute;inset:3.2%;border:1px solid #a7b59a;outline:1px solid #2c3a2c;outline-offset:3px;pointer-events:none}
+.page.r{position:absolute;left:50%;right:14px;top:12px;bottom:14px}
+.page.r::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#000 0,#000a 3%,#0000 14%)}
+.page.back{inset:12px 0 14px 14px;transform:rotateY(180deg) translateZ(1px);z-index:1}
+.page.back::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,#000 0,#000a 3%,#0000 14%)}
+.leaf{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;padding:calc(var(--w) * .036) calc(var(--w) * .04) calc(var(--w) * .03) calc(var(--w) * .05)}
+.page.back .leaf{padding-inline:calc(var(--w) * .04) calc(var(--w) * .05)}
+.rub{margin:0;font:400 calc(var(--w) * .052)/1 Frak,serif;color:#e2ead2;text-shadow:2px 2px #0f3a1c}
+.run{margin:0;font:calc(var(--w) * .0125)/1.3 Departure,monospace;letter-spacing:.14em;text-transform:uppercase;color:#7d8f76;text-align:center}
+.toc{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-evenly;margin:calc(var(--w) * .012) 0;padding:0;list-style:none;border-top:3px double #65755f}
+.toc a{display:flex;align-items:baseline;gap:8px;color:#dfe8cf;text-decoration:none}
+.toc .t{font:400 calc(var(--w) * .0285)/1.1 Frak,serif;white-space:nowrap}
+.toc .t::first-letter{color:#b5ff41}
+.toc .dots{flex:1;min-width:12px;border-bottom:1px dotted #65755f;transform:translateY(-.2em)}
+.toc .f{font:calc(var(--w) * .0145)/1 Departure,monospace;color:#b5ff41}
+.toc a:hover,.toc a:focus-visible{color:#b5ff41;outline:0}
+.toc a:hover .dots,.toc a:focus-visible .dots{border-bottom:1px solid #b5ff41}
+.plate{align-items:center;justify-content:center;gap:calc(var(--w) * .014);text-align:center}
+.plate img{display:block;width:100%;max-width:calc(var(--w) * .36);height:auto;mask:radial-gradient(closest-side,#000 90%,#0000)}
+.plate .rub{font-size:calc(var(--w) * .058)}
+
+@media (max-width:640px){
+  .page.r{left:12px;right:12px;top:50%;bottom:14px}
+  .page.r::after{background:linear-gradient(180deg,#000 0,#000a 3%,#0000 14%)}
+  .page.back{inset:14px 12px 0 12px;transform:rotateX(180deg) translateZ(1px)}
+  .page.back::after{background:linear-gradient(0deg,#000 0,#000a 3%,#0000 14%)}
+  .leaf,.page.back .leaf{padding:7% 8% 5%}
+  .rub{font-size:26px}
+  .toc{margin:4px 0}
+  .toc .t{font-size:15px}
+  .toc .f{font-size:9px}
+  .run{font-size:8px}
+  .plate{flex-direction:row;flex-wrap:wrap;gap:4px 12px}
+  .plate img{width:44%;max-width:none}
+  .plate .rub{font-size:30px}
+  .plate .run{width:100%}
+}
+
+/* just the book, centred, one screen */
+html,body{height:100%;overflow:hidden}
+body{margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.title{margin:0 0 10px}
+@media (max-width:640px){.title{margin:0 8px 8px}}
+@media (prefers-reduced-motion:reduce){.book,.cover{transition:none}}

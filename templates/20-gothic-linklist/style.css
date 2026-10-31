@@ -1,34 +1,47 @@
-html{background:#07000f;color-scheme:dark}
-body{max-width:720px;margin:0 auto;padding:8px 0 24px;background:#07000f;color:#fff;
-  font:16px/1.25 Departure,"Lucida Console",monospace;letter-spacing:0}
-a{color:#6120ce}
-a:hover{color:#8a50ff}
-::selection{background:#6120ce;color:#fff}
-p{margin:18px 0}
-h1{font-size:20px;line-height:24px;font-weight:700;margin:20px 0}
-ul{margin:16px 0;padding-left:40px}
-li{margin:0}
+/* 332 // gothic linklist: a crypt index. blackletter over 1-bit decay */
+:root{--black:#020503;--bone:#dfe8cf;--silver:#a7b59a;--dim:#7d8f76;--line:#1d4a26;--acid:#b5ff41;--pink:#ff1f8f;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.42 Departure,"Lucida Console",monospace;color:var(--silver)}
+/* decay creeping in from both margins */
+body::before,body::after{content:"";position:fixed;top:0;bottom:0;width:7vw;z-index:-1;background:conic-gradient(#1d5a1e 25%,#0000 0 50%,#1d5a1e 0 75%,#0000 0) 0 0/4px 4px}
+body::before{left:0;mask:linear-gradient(90deg,#000,#0000)}
+body::after{right:0;mask:linear-gradient(270deg,#000,#0000)}
+a{color:var(--acid);text-underline-offset:3px}
+a:hover,a:focus-visible{background:var(--acid);color:var(--black);text-decoration:none;outline:0}
 
-.bannerlink{text-decoration:none;color:#fff}
-.banner{position:relative;display:flex;justify-content:center;align-items:center;margin:10px 0 22px;height:110px;
-  font:78px/1 Frak,"Old English Text MT",serif;color:#fff;
-  text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000,3px 4px 0 #3a3344}
-.banner .w1{position:relative;z-index:1}
-.banner .w2{position:relative;z-index:1;margin-left:-16px;font-size:84px}
-.skel{position:relative;z-index:2;width:72px;height:108px;margin:-10px 0 0 -10px;transform:rotate(8deg)}
+/* the masthead: the name punched out of a dithered band, a thin line of metadata under double rules */
+.mast{position:relative;text-align:center}
+.mast::before{content:"";position:absolute;inset:0 0 34px;z-index:-1;background:conic-gradient(#1d5a1e 25%,#0000 0 50%,#1d5a1e 0 75%,#0000 0) 0 0/4px 4px;mask:linear-gradient(#0000,#000 90%)}
+.name{padding:clamp(18px,4vh,40px) 12px clamp(8px,1.5vh,16px);font:clamp(56px,12.5vw,196px)/.92 Frak,"Old English Text MT",serif;color:var(--bone);text-shadow:0 0 0 #000,4px 4px 0 #020503,-1px -1px 0 #020503}
+.w2{color:var(--acid)}
+.line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 8vw;border-block:3px double var(--dim);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.line h1{font:inherit;color:var(--bone)}
 
-.foot{display:flex;align-items:flex-end;gap:6px;margin-top:22px}
-.btn{display:flex;align-items:center;gap:3px;width:64px;height:24px;padding:1px 3px;background:#000;border:1px solid #9a9aa8;text-decoration:none}
-.mark{width:22px;height:12px;background:linear-gradient(160deg,#0000 0 30%,#3a4ad8 30% 55%,#0000 55%),linear-gradient(20deg,#6a7aff 0 40%,#0000 40%);
-  clip-path:polygon(0 100%,30% 20%,55% 60%,80% 0,100% 100%)}
-.bt{font:8px/1 Departure,monospace;color:#fff;text-align:right;flex:1}
-.foot a:last-child{font-size:15px}
+/* the index: a wall of columns with hairline rules */
+.crypt{columns:4 300px;column-gap:28px;column-rule:1px solid var(--line);max-width:1720px;margin:0 auto;padding:18px 8vw 24px;}
+.crypt section{margin-bottom:26px}
+.crypt h2{break-after:avoid;font:400 clamp(30px,2.6vw,42px)/1 Frak,serif;color:var(--bone);text-shadow:2px 2px #0f3a1c;padding-bottom:6px;margin-bottom:8px;border-bottom:3px double var(--dim)}
+.crypt ul{list-style:none}
+.crypt li{break-inside:avoid;position:relative;padding-left:16px;margin-bottom:7px;font-size:13px}
+.crypt li::before{content:"";position:absolute;left:2px;top:.35em;width:7px;height:10px;background:linear-gradient(var(--dim) 0 0) 50% 0/1px 100% no-repeat,linear-gradient(var(--dim) 0 0) 0 30%/100% 1px no-repeat}
+.crypt li:hover{color:var(--bone)}
+.crypt li:hover::before{background:linear-gradient(var(--pink) 0 0) 50% 0/1px 100% no-repeat,linear-gradient(var(--pink) 0 0) 0 30%/100% 1px no-repeat}
+.crypt li a:first-child{font-size:14px}
+
+.foot{display:flex;align-items:center;justify-content:center;gap:12px;padding:12px;border-top:1px solid var(--dim)}
+.btn{display:flex;align-items:center;gap:4px;width:88px;height:31px;padding:2px 4px;text-decoration:none;background:var(--black);border:2px outset var(--silver)}
+.mark{width:24px;height:24px;background:url(../shared/logo-1bit.png) center/cover;image-rendering:pixelated}
+.bt{flex:1;font:9px/1 Departure,monospace;color:var(--bone);text-align:right}
 
 @media (max-width:760px){
-  body{padding:8px 14px 24px;font-size:15px}
-  .banner{font-size:40px;height:84px}
-  .banner .w2{font-size:46px;margin-left:-8px}
-  .skel{width:50px;height:75px}
-  h1{font-size:17px}
-  ul{padding-left:26px}
+  body::before,body::after{display:none}
+  .crypt{padding:14px 14px 20px}
 }
+
+/* the scrollbar: a 1-bit dithered bar in a ruled slot, solid when you touch it */
+html:root{scrollbar-color:auto}
+::-webkit-scrollbar{width:12px}
+::-webkit-scrollbar-track{background:repeating-linear-gradient(#2c3a2c 0 1px,#0000 1px 32px) 0 0/5px 100% no-repeat,#020503;border-left:1px solid #2c3a2c}
+::-webkit-scrollbar-thumb{min-height:48px;background:conic-gradient(#b5ff41 25%,#020503 0 50%,#b5ff41 0 75%,#020503 0) 0 0/4px 4px;border:1px solid #dfe8cf}
+::-webkit-scrollbar-thumb:hover,::-webkit-scrollbar-thumb:active{background:#b5ff41;border-color:#b5ff41}
+@supports not selector(::-webkit-scrollbar){html:root{scrollbar-color:#b5ff41 #020503}}

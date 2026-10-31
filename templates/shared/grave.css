@@ -1,0 +1,11 @@
+/* 332 // what every template shares: grit and scanlines */
+html{background-color:#020503;scrollbar-color:#65755f #020503;accent-color:#b5ff41}
+html body{background:transparent}
+::selection{background:#b5ff41;color:#020503}
+:focus-visible{outline:2px solid #b5ff41;outline-offset:2px}
+
+/* xerox grit and scanlines */
+html::before{content:"";position:fixed;inset:0;z-index:2147483646;pointer-events:none;
+  background:repeating-linear-gradient(to bottom,#0000 0 2px,#00000030 2px 3px)}
+html::after{content:"";position:fixed;inset:0;z-index:2147483647;pointer-events:none;background:url(grain.svg);opacity:.08}
+

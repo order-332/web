@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74 30" width="74" height="30">
-<defs><filter id="g" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="2.2"/></filter></defs>
-<rect width="74" height="30" fill="#000"/>
-<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-<path id="p" d="M18 8 Q6 6 7 15 Q8 23 19 21 M24 8 H38 M31 8 L29 23 M44 23 L46 8 H58 M45 15 H54" stroke="#1a3cff" stroke-width="5" filter="url(#g)"><animate attributeName="opacity" values="1;.5;1;1;.7;1" dur="1.7s" repeatCount="indefinite"/></path>
-<path d="M18 8 Q6 6 7 15 Q8 23 19 21 M24 8 H38 M31 8 L29 23 M44 23 L46 8 H58 M45 15 H54" stroke="#2b46ff" stroke-width="2.6"/>
-<path d="M18 8 Q6 6 7 15 Q8 23 19 21 M24 8 H38 M31 8 L29 23 M44 23 L46 8 H58 M45 15 H54" stroke="#9fb0ff" stroke-width=".8"/>
-</g>
-</svg>

@@ -7,7 +7,7 @@
     if (parent) parent.appendChild(e);
     return e;
   };
-  const CHIPS = [["03", "NFO"], ["04", "BBS"], ["06", "HEXDUMP"], ["08", "GLYPH"], ["09", "GLOBE"], ["10", "CIRCUIT"], ["11", "WEB"]];
+  const CHIPS = [["04", "BBS"], ["10", "CIRCUIT"], ["12", "GRIMOIRE"], ["14", "ORBIT"], ["15", "WIRED"], ["19", "FF7 BOX"], ["20", "GOTHIC"]];
   const GLYPH = { // 5x7 dot matrix
     "3": ["11110", "00001", "00001", "01110", "00001", "00001", "11110"],
     "2": ["01110", "10001", "00001", "00010", "00100", "01000", "11111"]
