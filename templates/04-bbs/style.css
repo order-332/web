@@ -1,12 +1,12 @@
-:root{--bg:#000;color-scheme:dark}
+:root{--bg:#020503;color-scheme:dark}
 *{box-sizing:border-box;margin:0}
-html,body{height:100%;background:var(--bg)}
-::selection{background:#39ff14;color:#000}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.crt{min-height:100%;display:grid;grid-template-rows:1fr auto;position:relative;background:radial-gradient(ellipse at 50% 45%,#06140a,#000 75%)}
-.term{font:clamp(9px,2.3vw,22px)/1.15 VGA,monospace;padding:5vh 6vw;color:#b8c4b8;text-shadow:-1px 0 #ff2bd633,1px 0 #00ffd533}
+.crt{height:100vh;height:100dvh;display:grid;grid-template-rows:minmax(0,1fr) auto;position:relative;overflow:hidden}
+/* sized so all 27 rows always fit one screen, whatever the viewport */
+.term{align-self:center;overflow:hidden;font:clamp(8px,min(1.15vw,2.75vh),20px)/1.15 VGA,monospace;padding:0 6vw;color:#39ff14}
 .ln{display:inline-block;animation:type .35s steps(24) both}
-@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 -100vw 0 0)}}
 .d0{animation-delay:0.00s}
 .d1{animation-delay:0.16s}
 .d2{animation-delay:0.32s}
@@ -34,12 +34,14 @@ html,body{height:100%;background:var(--bg)}
 .d24{animation-delay:4.64s}
 .d25{animation-delay:4.80s}
 .d26{animation-delay:4.96s}
-.c3{color:#00ffd5}.c5{color:#ff2bd6}.c7{color:#d6e0d6}.c8{color:#5e6b5e}.cB{color:#39ff14}.cD{color:#ff2bd6}.cF{color:#fff}
-.g0{color:rgb(182,255,74)}.g1{color:rgb(151,255,61)}.g2{color:rgb(120,255,47)}.g3{color:rgb(88,255,34)}.g4{color:rgb(57,255,20)}.g5{color:rgb(43,255,49)}.g6{color:rgb(29,255,78)}.g7{color:rgb(14,255,107)}.g8{color:rgb(0,255,136)}.g9{color:rgb(0,245,142)}.g10{color:rgb(0,235,148)}.g11{color:rgb(0,224,154)}.g12{color:rgb(0,214,160)}.gsh{color:#3d0040}
-.lg{text-shadow:0 0 10px currentColor}
+.c3{color:#00ffc8}.c5{color:#ff1f8f}.c7{color:#7dff9a}.c8{color:#4f9a62}.cB{color:#39ff14}.cD{color:#ff1f8f}.cF{color:#eaffd0}
+/* the block letters: toxic falling to deep poison, a bruise for a shadow, chroma split on the edges */
+.g0{color:#eaff00}.g1{color:#d4ff00}.g2{color:#b4ff00}.g3{color:#8cff00}.g4{color:#5cff0a}.g5{color:#39ff14}.g6{color:#1cf52e}.g7{color:#0ce848}.g8{color:#04d65c}.g9{color:#02c06a}.g10{color:#00a870}.g11{color:#008f6e}.g12{color:#007566}.gsh{color:#2a0a3d}
+.lg{text-shadow:-2px 0 #ff1f8fb0,2px 0 #00ffe1a0}
 .cur{color:#39ff14;animation:blink 1.06s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.status{display:flex;flex-wrap:wrap;background:#39ff14;color:#000;font:clamp(12px,1.3vw,16px)/1 VGA,monospace}
-.status span{padding:5px 1.4ch;border-right:2px solid #0f5a00}
-.status .on{margin-left:auto;background:#ff2bd6;color:#000;border:0}
+.status{display:flex;flex-wrap:wrap;background:#39ff14;color:#020503;font:clamp(11px,1.15vw,15px)/1 VGA,monospace}
+.status span{padding:5px 1.4ch;border-right:2px solid #0a5a14}
+.status .on{margin-left:auto;background:#ff1f8f;color:#020503;border:0}
+@media (max-width:760px){.term{font-size:clamp(7px,min(2.25vw,2.75vh),12px);padding:0 2vw}}
 @media (prefers-reduced-motion:reduce){*,*::after{animation:none!important}}
